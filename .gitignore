@@ -9,3 +9,15 @@ buildNumber.properties
 .mvn/timing.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
+
+# idea
+.idea
+*.iml
+/bin/
+.classpath
+.project
+.settings
+test-output
+
+src/test/resources/webdrivers/
+allure-results/
