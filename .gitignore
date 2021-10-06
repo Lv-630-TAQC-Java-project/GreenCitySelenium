@@ -19,4 +19,5 @@ buildNumber.properties
 .settings
 test-output
 
+src/test/resources/webdrivers/
 allure-results/
