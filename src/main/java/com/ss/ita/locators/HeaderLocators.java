@@ -3,7 +3,11 @@ package com.ss.ita.locators;
 import org.openqa.selenium.By;
 
 public enum HeaderLocators implements BaseLocator {
-    ECO_NEWS_LINK(By.xpath("/html/body/app-root/app-main/app-header/header/div/div/div/nav/ul/li[1]/a"));
+    ECO_NEWS_LINK(By.xpath("/html/body/app-root/app-main/app-header/header/div/div/div/nav/ul/li[1]/a")),
+    SIGN_IN(By.xpath("//a[normalize-space()='Sign in']")),
+    EMAIL(By.id("email")),
+    PASSWORD(By.id("password")),
+    SIGN_IN_IN_WINDOW(By.xpath("//button[@type='submit']"));
 
 
     private final By path;
