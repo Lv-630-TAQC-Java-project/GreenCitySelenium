@@ -15,4 +15,14 @@ public class FirstTest extends TestRuner{
         String title = ecoNewsPage.getMainHeader().getText();
         Assert.assertEquals(title, "Eco news");
     }
+    @Test
+    public void changeLanguageFromEnToUkr(){
+        new HomePage(driver)
+                .getLanguageBar()
+                .clickOnChangingLanguageButtons();
+
+        HomePage homePage =new HomePage(driver);
+        String homePageTitle = homePage.getHomePageTitle().getText();
+        Assert.assertEquals(homePageTitle,"Новий спосіб виховати в собі корисні звички");
+    }
 }
