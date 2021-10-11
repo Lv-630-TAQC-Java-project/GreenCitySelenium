@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 public enum EcoNewsLocators implements BaseLocator {
     ECO_NEWS_MAIN_HEADER(By.cssSelector("#main-content > div > div:nth-child(1) > div > h1")),
-	CREATE_NEW_BUTTON(By.id("create-button"));
+    CREATE_NEW_BUTTON(By.id("create-button"));
 
 
     private final By path;
