@@ -1,13 +1,11 @@
 package com.ss.ita.pages;
 
-import com.ss.ita.elements.Label;
 import com.ss.ita.elements.Link;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+
 
 import static com.ss.ita.locators.HeaderLocators.ECO_NEWS_LINK;
-import static com.ss.ita.locators.HeaderLocators.ENGLISH_LANGUAGE_BUTTON;
+
 
 public class Header extends BasePage {
     private Link ecoNewsLink;

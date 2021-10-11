@@ -17,11 +17,10 @@ public class FirstTest extends TestRuner{
     }
     @Test
     public void changeLanguageFromEnToUkr(){
-        new HomePage(driver)
-                .getLanguageBar()
-                .clickOnChangingLanguageButtons();
+        HomePage homePage = new HomePage(driver).getLanguageBar()
+                .clickOnLanguageSwitcher()
+                .clickOnUkrLanguage();
 
-        HomePage homePage = new HomePage(driver);
         String homePageTitle = homePage.getHomePageTitle().getText();
         Assert.assertEquals(homePageTitle,"Новий спосіб виховати в собі корисні звички");
     }
