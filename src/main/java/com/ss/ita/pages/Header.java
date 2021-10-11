@@ -3,8 +3,10 @@ package com.ss.ita.pages;
 import com.ss.ita.elements.Link;
 import com.ss.ita.elements.Button;
 import com.ss.ita.elements.LanguageSwitcher;
-import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import static com.ss.ita.locators.HeaderLocators. ECO_NEWS_LINK;
 import static com.ss.ita.locators.HeaderLocators.LANGUAGE_SWITCHER;
