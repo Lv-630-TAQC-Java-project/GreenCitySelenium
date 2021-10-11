@@ -78,9 +78,15 @@ public class Header extends BasePage {
 	}
 	
 	
-	public MySpacePage login() {
-		getHeader().clickLanguageSwitcher().clickLanguageSwitcherEn().goToSignPage()
-				.setEmail(TARAS_KRASITSKYI.getEmail() ).setPassword(TARAS_KRASITSKYI.getPassword()).goToMySpacePage();
+	public MySpacePage login(String email, String password) {
+		getHeader()
+		.clickLanguageSwitcher()
+		.clickLanguageSwitcherEn()
+		.goToSignPage()
+		.setEmail(email)
+		.setPassword(password)
+		.goToMySpacePage();
+		
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {

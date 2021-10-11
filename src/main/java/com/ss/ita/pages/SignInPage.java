@@ -42,7 +42,7 @@ public class SignInPage extends BasePage {
 		return password;
 	}
 
-	public  SignInPage setEmail(String email) {
+	public  SignInPage setEmail(String email) {//???? or Input?
 		getEmail().clickInput();
 		getEmail().clearInput();
 		getEmail().sendKeys(email);

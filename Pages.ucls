@@ -55,10 +55,15 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="7">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
+  <class id="7" language="java" name="com.ss.ita.pages.CreateNewsPage" project="GreenCitySelenium" 
+    file="/GreenCitySelenium/src/main/java/com/ss/ita/pages/CreateNewsPage.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="181" x="728" y="393"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
   <association id="8">    
     <end type="SOURCE" refId="1" navigable="false">      
       <attribute id="9" name="header">        
@@ -72,7 +77,7 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <generalization id="11">    
-    <end type="SOURCE" refId="5"/>    
+    <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
   <generalization id="12">    
@@ -80,11 +85,19 @@
     <end type="TARGET" refId="1"/>  
   </generalization>  
   <generalization id="13">    
-    <end type="SOURCE" refId="3"/>    
+    <end type="SOURCE" refId="2"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
   <generalization id="14">    
-    <end type="SOURCE" refId="2"/>    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="15">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="16">    
+    <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="1"/>  
   </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
