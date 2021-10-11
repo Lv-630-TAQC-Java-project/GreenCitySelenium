@@ -27,6 +27,7 @@ public class TestRuner {
                 throw new IllegalArgumentException("Invalid browser");
             }
         }
+
         driver.manage().window().maximize();
         driver.get(propertiesProvider.getBaseUrl());
     }
