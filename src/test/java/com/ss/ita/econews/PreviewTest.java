@@ -4,6 +4,9 @@ import com.ss.ita.pages.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import static com.ss.ita.data.UserSignInData.TARAS_KRASITSKYI;
+import static com.ss.ita.data.UserSignInData.VLAD_DMYTRIV;
+
 public class PreviewTest extends TestRuner {
 
     @Test
@@ -13,7 +16,7 @@ public class PreviewTest extends TestRuner {
         String content = "test content preview";
         new HomePage(driver)
                 .getHeader()
-                .login("Vladdmutriv@gmail.com","1203Vlad01*");
+                .login(VLAD_DMYTRIV.getEmail(), VLAD_DMYTRIV.getPassword());
         PreviewPage previewPage = new HomePage(driver)
                 .getHeader()
                 .clickEcoNewsLink()
