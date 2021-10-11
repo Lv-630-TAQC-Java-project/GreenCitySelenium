@@ -5,7 +5,8 @@ import com.ss.ita.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class FirstTest extends TestRuner{
+public class FirstTest extends TestRuner {
+
 
     @Test
     public void goToEconews(){
@@ -24,4 +25,5 @@ public class FirstTest extends TestRuner{
         String homePageTitle = homePage.getHomePageTitle().getText();
         Assert.assertEquals(homePageTitle,"Новий спосіб виховати в собі корисні звички");
     }
+
 }

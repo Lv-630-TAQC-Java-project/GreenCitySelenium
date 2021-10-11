@@ -13,6 +13,7 @@ buildNumber.properties
 # idea
 .idea
 *.iml
+*.ucls
 /bin/
 .classpath
 .project
