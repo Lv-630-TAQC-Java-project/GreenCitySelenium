@@ -3,9 +3,7 @@ package com.ss.ita.pages;
 import com.ss.ita.elements.Link;
 import org.openqa.selenium.WebDriver;
 
-
 import static com.ss.ita.locators.HeaderLocators.ECO_NEWS_LINK;
-
 
 public class Header extends BasePage {
     private Link ecoNewsLink;
@@ -25,7 +23,6 @@ public class Header extends BasePage {
         }
         return ecoNewsLink;
     }
-
 
     public EcoNewsPage clickEcoNewsLink(){
         getEcoNewsLink().click();

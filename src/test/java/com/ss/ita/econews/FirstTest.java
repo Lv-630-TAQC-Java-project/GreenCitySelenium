@@ -16,7 +16,7 @@ public class FirstTest extends TestRuner{
         Assert.assertEquals(title, "Eco news");
     }
     @Test
-    public void changeLanguageFromEnToUkr(){
+    public void changeLanguageToUkr(){
         HomePage homePage = new HomePage(driver).getLanguageBar()
                 .clickOnLanguageSwitcher()
                 .clickOnUkrLanguage();

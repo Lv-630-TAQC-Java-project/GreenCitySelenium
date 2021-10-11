@@ -1,10 +1,7 @@
 package com.ss.ita.pages;
 
 import com.ss.ita.elements.Label;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static com.ss.ita.locators.HeaderLocators.*;
 
@@ -36,6 +33,4 @@ public class LanguageBar extends BasePage{
         getUkrainianBar().click();
         return new HomePage(driver);
     }
-
-
 }
