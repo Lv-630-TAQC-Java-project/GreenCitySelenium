@@ -13,7 +13,7 @@ public class PreviewTest extends TestRuner {
         String content = "test content preview";
         new HomePage(driver)
                 .getHeader()
-                .login();
+                .login("Vladdmutriv@gmail.com","1203Vlad01*");
         PreviewPage previewPage = new HomePage(driver)
                 .getHeader()
                 .clickEcoNewsLink()

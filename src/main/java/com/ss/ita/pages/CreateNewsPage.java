@@ -2,20 +2,37 @@ package com.ss.ita.pages;
 
 import org.openqa.selenium.WebDriver;
 
-import static com.ss.ita.locators.CreateNewsLocators.*;
+import com.ss.ita.elements.TextArea;
 
+import static com.ss.ita.locators.CreateNewsLocators.*;
+import static com.ss.ita.locators.CreateNewsLocators.PUBLISH_BUTTON;
+import static com.ss.ita.locators.CreateNewsPageLocators.*;
 
 public class CreateNewsPage extends BasePage {
 
-
-    public CreateNewsPage(WebDriver driver) {
-        super(driver);
+	public CreateNewsPage(WebDriver driver) {
+		super(driver);
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
+	}
+
+    private TextArea content;
+
+	public TextArea getTextArea() {
+		if(content == null) {
+			content = new TextArea(driver, CONTENT_TEXT_AREA);
+		}
+
+		return content;
+	}
+
+	public  CreateNewsPage setTextArea() {
+		return this;
+	}
+
 
     public void createNews() throws InterruptedException {
         driver.findElement(TITLE_AREA.getPath()).sendKeys("Test News");
@@ -45,5 +62,5 @@ public class CreateNewsPage extends BasePage {
     public PreviewPage clickPreviewButton(){
         driver.findElement(PREVIEW_BUTTON.getPath()).click();
         return new PreviewPage(driver);
-    }
+}
 }
