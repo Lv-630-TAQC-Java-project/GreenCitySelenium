@@ -1,7 +1,6 @@
 package com.ss.ita.pages;
 
-import com.ss.ita.elements.Button;
-import com.ss.ita.elements.Label;
+import com.ss.ita.elements.*;
 import org.openqa.selenium.WebDriver;
 
 import static com.ss.ita.locators.EcoNewsLocators.*;

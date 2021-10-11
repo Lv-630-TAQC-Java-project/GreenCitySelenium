@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import com.ss.ita.elements.TextArea;
 
 import static com.ss.ita.locators.CreateNewsLocators.*;
-import static com.ss.ita.locators.CreateNewsLocators.PUBLISH_BUTTON;
 import static com.ss.ita.locators.CreateNewsPageLocators.*;
 
 public class CreateNewsPage extends BasePage {

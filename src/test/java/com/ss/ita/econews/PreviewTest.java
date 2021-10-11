@@ -4,8 +4,7 @@ import com.ss.ita.pages.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static com.ss.ita.data.UserSignInData.TARAS_KRASITSKYI;
-import static com.ss.ita.data.UserSignInData.VLAD_DMYTRIV;
+import static com.ss.ita.data.UserSignInData.*;
 
 public class PreviewTest extends TestRuner {
 

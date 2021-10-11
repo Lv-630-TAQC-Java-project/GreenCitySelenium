@@ -2,8 +2,7 @@ package com.ss.ita.pages;
 
 import com.ss.ita.elements.Link;
 
-import com.ss.ita.elements.Button;
-import com.ss.ita.elements.LanguageSwitcher;
+import com.ss.ita.elements.*;
 
 import org.openqa.selenium.WebDriver;
 

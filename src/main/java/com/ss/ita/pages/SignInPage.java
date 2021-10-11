@@ -2,8 +2,7 @@ package com.ss.ita.pages;
 
 import org.openqa.selenium.WebDriver;
 
-import com.ss.ita.elements.Button;
-import com.ss.ita.elements.Input;
+import com.ss.ita.elements.*;
 
 
 import static com.ss.ita.locators.SignInLoacators.SIGN_IN_BUTTON;
