@@ -21,7 +21,7 @@ public class FirstTest extends TestRuner{
                 .getLanguageBar()
                 .clickOnChangingLanguageButtons();
 
-        HomePage homePage =new HomePage(driver);
+        HomePage homePage = new HomePage(driver);
         String homePageTitle = homePage.getHomePageTitle().getText();
         Assert.assertEquals(homePageTitle,"Новий спосіб виховати в собі корисні звички");
     }
