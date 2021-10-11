@@ -1,8 +1,6 @@
 package com.ss.ita.econews;
 
-import com.ss.ita.pages.CreateNewsPage;
-import com.ss.ita.pages.EcoNewsPage;
-import com.ss.ita.pages.HomePage;
+import com.ss.ita.pages.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

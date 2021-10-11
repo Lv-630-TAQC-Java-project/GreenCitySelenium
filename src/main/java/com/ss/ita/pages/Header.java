@@ -49,5 +49,10 @@ public class Header extends BasePage {
         driver.findElement(EMAIL.getPath()).sendKeys("greencity.test.user@gmail.com");
         driver.findElement(PASSWORD.getPath()).sendKeys("LeVq3ucLZRVPJuA!");
         driver.findElement(SIGN_IN_IN_WINDOW.getPath()).click();
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

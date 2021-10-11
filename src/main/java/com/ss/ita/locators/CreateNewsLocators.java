@@ -13,7 +13,8 @@ public enum CreateNewsLocators implements BaseLocator {
     EDUCATION_BUTTON(By.xpath("//button[normalize-space()='Education']")),
     SOURCE_AREA(By.xpath("//input[@placeholder='link to external source']")),
     CONTENT_AREA(By.name("main-area")),
-    PUBLISH_BUTTON(By.cssSelector("button.submit"));
+    PUBLISH_BUTTON(By.cssSelector("button.submit")),
+    PREVIEW_BUTTON (By.xpath("//button[@class='preview']"));
 
     private By path;
 
