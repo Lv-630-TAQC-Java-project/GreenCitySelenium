@@ -13,8 +13,6 @@ public enum HeaderLocators implements BaseLocator {
     LANGUAGE_SWITCHER_EN(By.cssSelector("li[aria-label=english]")),
     SIGN_IN_BUTTON(By.cssSelector("a.header_sign-in-link.tertiary-global-button"));
 
-    private final By path;
-
     HeaderLocators(By path) {
         this.path = path;
     }
