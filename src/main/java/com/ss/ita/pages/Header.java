@@ -32,6 +32,12 @@ public class Header extends BasePage {
 	}
 
 	public EcoNewsPage clickEcoNewsLink() {
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		getEcoNewsLink().click();
 		return new EcoNewsPage(driver);
 	}
