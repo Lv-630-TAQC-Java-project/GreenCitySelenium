@@ -11,5 +11,4 @@ public class Label extends BaseWebElement {
     public String getText() {
         return this.webElement.getText();
     }
-    
 }
