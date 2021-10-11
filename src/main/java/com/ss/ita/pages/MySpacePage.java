@@ -10,7 +10,7 @@ public class MySpacePage extends BasePage {
 
 	public MySpacePage(WebDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Link getHomepageLink() {

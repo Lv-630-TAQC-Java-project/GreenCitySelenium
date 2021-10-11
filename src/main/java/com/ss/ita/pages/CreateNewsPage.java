@@ -21,7 +21,7 @@ public class CreateNewsPage extends BasePage {
 		return content;
 	}
 	
-	public  CreateNewsPage setTextArea() { // public  TextArea setTextArea()???
+	public  CreateNewsPage setTextArea() { 
 		return this;
 	}
 
