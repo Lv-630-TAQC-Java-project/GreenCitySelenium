@@ -17,6 +17,7 @@ public class EcoNewsPage extends BasePage {
 	private Label createdNewsTitle;
 	private Button createNewsButton;
 	private Button filterByNews;
+	private Label newsTitle;
 
 	public EcoNewsPage(WebDriver driver) {
 		super(driver);
@@ -60,5 +61,13 @@ public class EcoNewsPage extends BasePage {
 	public EcoNewsPage clickFilterByNews() {
 		getFilterByNews().clickButton();
 		return new EcoNewsPage(driver);
+	}
+
+	public Label getNewsTitle() {
+		if (newsTitle == null) {
+			newsTitle = new Label(driver, TEST_NEWS_TITLE);
+		}
+
+		return newsTitle;
 	}
 }

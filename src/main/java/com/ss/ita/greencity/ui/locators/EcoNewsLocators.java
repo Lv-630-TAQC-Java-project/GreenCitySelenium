@@ -8,7 +8,6 @@ public enum EcoNewsLocators implements BaseLocator {
     TEST_NEWS_TITLE(By.xpath("(//h3[contains(text(),'Test News')])[1]")),
     FILTER_BY_NEWS(By.xpath(("//a[normalize-space()='News']")));
 
-
     private final By path;
 
     EcoNewsLocators(By path) {

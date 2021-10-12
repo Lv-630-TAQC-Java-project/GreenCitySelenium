@@ -3,6 +3,7 @@ package com.ss.ita.greencity.ui.pages;
 import com.ss.ita.greencity.ui.elements.Button;
 import com.ss.ita.greencity.ui.elements.Paragraph;
 import com.ss.ita.greencity.ui.elements.TextArea;
+import com.ss.ita.pages.PreviewPage;
 import org.openqa.selenium.WebDriver;
 
 import static com.ss.ita.greencity.ui.locators.CreateNewsPageLocators.*;
@@ -18,8 +19,14 @@ public class CreateNewsPage extends BasePage {
     private Button initiatives_button;
     private Button education_button;
     private Button publish_button;
+
     public CreateNewsPage(WebDriver driver) {
         super(driver);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -64,8 +71,8 @@ public class CreateNewsPage extends BasePage {
         return title_area;
     }
 
-    public TextArea setTitleTextArea() {
-        getTitle_area().sendKeysTextArea("Test News");
+    public TextArea setTitleTextArea(String text) {
+        getTitle_area().sendKeysTextArea(text);
         return new TextArea(driver, TITLE_TEXT_AREA);
     }
 
@@ -140,5 +147,37 @@ public class CreateNewsPage extends BasePage {
         getPublishButton().clickButton();
         return new CreateNewsPage(driver);
     }
+
+    public void createNews() throws InterruptedException {
+        driver.findElement(TITLE_AREA.getPath()).sendKeys("Test News");
+        driver.findElement(NEWS_BUTTON.getPath()).click();
+        driver.findElement(ADS_BUTTON.getPath()).click();
+        driver.findElement(EVENTS_BUTTON.getPath()).click();
+        driver.findElement(CONTENT_AREA.getPath()).sendKeys("Description for test news");
+        driver.findElement(PUBLISH_BUTTON.getPath()).click();
+        Thread.sleep(10000);
+    }
+
+    public CreateNewsPage setTitle(String title) {
+        driver.findElement(TITLE_AREA.getPath()).sendKeys(title);
+        return this;
+    }
+
+    public CreateNewsPage setSource(String source) {
+        driver.findElement(SOURCE_AREA.getPath()).sendKeys(source);
+        return this;
+    }
+
+    public CreateNewsPage setContent(String content) {
+        driver.findElement(CONTENT_AREA.getPath()).sendKeys(content);
+        return this;
+    }
+    public PreviewPage clickPreviewButton(){
+        driver.findElement(PREVIEW_BUTTON.getPath()).click();
+        return new PreviewPage(driver);
+    }
+
+
+
 
 }
