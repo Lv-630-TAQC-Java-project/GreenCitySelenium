@@ -51,7 +51,7 @@ public class SignInPage extends BasePage {
 	
 	public  SignInPage setPassword(String pass) {
 		getPassword().clickInput();
-		getPassword().clickInput();
+		getPassword().clearInput();
 		getPassword().sendKeys(pass);
 		return this;
 		
