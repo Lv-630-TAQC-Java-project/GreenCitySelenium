@@ -28,13 +28,4 @@ public class FirstTest extends TestRuner {
         Assert.assertEquals(homePageTitle,"Новий спосіб виховати в собі корисні звички");
     }
 
-    @Test
-    public void createNews() throws InterruptedException {
-        new HomePage(driver).getHeader().login("vladdmutriv@gmail.com","1203Vlad01*");
-        EcoNewsPage ecoNewsPage = new HomePage(driver).getHeader().clickEcoNewsLink();
-        ecoNewsPage.getHeader().clickCreateButton();
-        new CreateNewsPage(driver).createNews();
-        String title = ecoNewsPage.getNewsTitle().getText();
-        Assert.assertEquals(title, "Test News");
-    }
 }

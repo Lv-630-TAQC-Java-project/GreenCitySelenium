@@ -1,4 +1,4 @@
-package com.ss.ita.pages;
+package com.ss.ita.greencity.ui.pages;
 
 import com.ss.ita.greencity.ui.pages.BasePage;
 import org.openqa.selenium.WebDriver;

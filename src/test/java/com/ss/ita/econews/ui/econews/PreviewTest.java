@@ -2,7 +2,7 @@ package com.ss.ita.econews.ui.econews;
 
 import com.ss.ita.econews.ui.runner.TestRuner;
 import com.ss.ita.greencity.ui.pages.HomePage;
-import com.ss.ita.pages.*;
+import com.ss.ita.greencity.ui.pages.PreviewPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

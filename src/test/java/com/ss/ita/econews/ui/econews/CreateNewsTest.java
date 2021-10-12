@@ -29,4 +29,14 @@ public class CreateNewsTest extends TestRuner {
         String title = new EcoNewsPage(driver).getCreatedNewsTitle().getText();
         Assert.assertEquals(title, "Test News");
     }
+
+    @Test
+    public void createNewsVlad(){
+        new HomePage(driver).getHeader().login("vladdmutriv@gmail.com","1203Vlad01*");
+        EcoNewsPage ecoNewsPage = new HomePage(driver).getHeader().clickEcoNewsLink();
+        ecoNewsPage.getHeader().clickCreateButton();
+        new CreateNewsPage(driver).createNews();
+        String title = ecoNewsPage.getNewsTitle().getText();
+        Assert.assertEquals(title, "Test News");
+    }
 }
