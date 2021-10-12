@@ -6,7 +6,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-public class TestRuner {
+import com.ss.ita.data.DataProviderImpl;
+
+public class TestRuner extends DataProviderImpl {
     protected static WebDriver driver;
     PropertiesProvider propertiesProvider = new PropertiesProvider();
 
