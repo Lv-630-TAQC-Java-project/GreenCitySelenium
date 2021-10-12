@@ -1,21 +1,21 @@
 package com.ss.ita.pages;
 
 import com.ss.ita.elements.Link;
+
 import com.ss.ita.elements.Button;
 import com.ss.ita.elements.LanguageSwitcher;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import static com.ss.ita.locators.HeaderLocators. ECO_NEWS_LINK;
 import static com.ss.ita.locators.HeaderLocators.LANGUAGE_SWITCHER;
 import static com.ss.ita.locators.HeaderLocators.LANGUAGE_SWITCHER_EN;
 import static com.ss.ita.locators.HeaderLocators.SIGN_IN_BUTTON;
-import static com.ss.ita.data.UserSignInData.* ;
+
 
 public class Header extends BasePage {
-	private Link ecoNewsLink;
+
+  private Link ecoNewsLink;
 	private LanguageSwitcher lngSwitcher;
 	private Button signInButton;
 
@@ -27,6 +27,7 @@ public class Header extends BasePage {
 			e.printStackTrace();
 		}
 	}
+	
 
 	public Link getEcoNewsLink() {
 		if (ecoNewsLink == null) {
@@ -36,12 +37,7 @@ public class Header extends BasePage {
 	}
 
 	public EcoNewsPage clickEcoNewsLink() {
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 		getEcoNewsLink().click();
 		return new EcoNewsPage(driver);
 	}
@@ -73,7 +69,7 @@ public class Header extends BasePage {
 
 	public SignInPage goToSignPage() {
 		getSignInButton().clickButton();
-		return new SignInPage(driver);// what object must return??
+		return new SignInPage(driver);
 
 	}
 	
@@ -93,7 +89,8 @@ public class Header extends BasePage {
 			e.printStackTrace();
 		} // ONLY FOR PRESENTATION
 
-		return new MySpacePage(driver); // or this???
+		return new MySpacePage(driver); 
 
 	}
+
 }

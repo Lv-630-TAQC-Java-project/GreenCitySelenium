@@ -11,6 +11,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 
 public class TestRuner extends DataProviderImpl {
+import com.ss.ita.data.DataProviderImpl;
+
+public class TestRuner extends DataProviderImpl {
     protected static WebDriver driver;
     PropertiesProvider propertiesProvider = new PropertiesProvider();
     protected SoftAssert softAssert;

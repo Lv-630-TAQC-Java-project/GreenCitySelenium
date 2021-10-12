@@ -20,5 +20,9 @@ public class TextArea extends BaseWebElement {
 		 this.webElement.sendKeys(text);
 	 }
 	 
+	 public String getBorderColor() {
+		 return this.webElement.getCssValue("border-color");
+	 }
+	 
 	 
 }

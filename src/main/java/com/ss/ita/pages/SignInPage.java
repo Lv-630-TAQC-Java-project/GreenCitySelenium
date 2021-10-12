@@ -42,16 +42,16 @@ public class SignInPage extends BasePage {
 		return password;
 	}
 
-	public  SignInPage setEmail(String email) {//???? or Input?
+	public  SignInPage setEmail(String email) {
 		getEmail().clickInput();
 		getEmail().clearInput();
 		getEmail().sendKeys(email);
-		return this;// new SignInPage(driver); What I must return???
+		return this;
 	}
 	
 	public  SignInPage setPassword(String pass) {
 		getPassword().clickInput();
-		getPassword().clickInput();
+		getPassword().clearInput();
 		getPassword().sendKeys(pass);
 		return this;
 		
