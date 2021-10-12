@@ -10,6 +10,7 @@ public class EcoNewsPage extends BasePage {
 
 	private Label mainHeader;
 	private Button createNewsButton;
+	private Button changeViewButton;
 
 	public EcoNewsPage(WebDriver driver) {
 		super(driver);
@@ -33,5 +34,19 @@ public class EcoNewsPage extends BasePage {
 	public CreateNewsPage clickCreateNewsButton() {
 		getCreateNewsButton().clickButton();
 		return new CreateNewsPage(driver);
+	}
+
+
+	public Button getChangeViewButton() {
+		if (changeViewButton == null) {
+			changeViewButton = new Button(driver, CHANGE_VIEW_BUTTON);
+
+		}
+		return changeViewButton;
+	}
+
+	public EcoNewsPage clickChangeViewButton() {
+		getChangeViewButton().clickButton();
+		return this;
 	}
 }
