@@ -3,7 +3,6 @@ package com.ss.ita.greencity.ui.pages;
 import com.ss.ita.greencity.ui.elements.Button;
 import com.ss.ita.greencity.ui.elements.Paragraph;
 import com.ss.ita.greencity.ui.elements.TextArea;
-import com.ss.ita.pages.PreviewPage;
 import org.openqa.selenium.WebDriver;
 
 import static com.ss.ita.greencity.ui.locators.CreateNewsPageLocators.*;
@@ -148,14 +147,18 @@ public class CreateNewsPage extends BasePage {
         return new CreateNewsPage(driver);
     }
 
-    public void createNews() throws InterruptedException {
+    public void createNews() {
         driver.findElement(TITLE_AREA.getPath()).sendKeys("Test News");
         driver.findElement(NEWS_BUTTON.getPath()).click();
         driver.findElement(ADS_BUTTON.getPath()).click();
         driver.findElement(EVENTS_BUTTON.getPath()).click();
         driver.findElement(CONTENT_AREA.getPath()).sendKeys("Description for test news");
         driver.findElement(PUBLISH_BUTTON.getPath()).click();
-        Thread.sleep(10000);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public CreateNewsPage setTitle(String title) {
