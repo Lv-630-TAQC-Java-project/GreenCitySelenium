@@ -6,9 +6,14 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-public class TestRuner {
+import com.ss.ita.data.DataProviderImpl;
+import org.testng.annotations.BeforeMethod;
+import org.testng.asserts.SoftAssert;
+
+public class TestRuner extends DataProviderImpl {
     protected static WebDriver driver;
     PropertiesProvider propertiesProvider = new PropertiesProvider();
+    protected SoftAssert softAssert;
 
     @BeforeClass
     protected void getDriver() {
@@ -34,6 +39,11 @@ public class TestRuner {
     @AfterClass
     protected void quitDriver() {
         if (driver != null) driver.quit();
+    }
+
+    @BeforeMethod
+    protected void setUp(){
+        softAssert = new SoftAssert();
     }
 
 }
