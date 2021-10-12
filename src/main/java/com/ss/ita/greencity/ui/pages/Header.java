@@ -6,7 +6,7 @@ import com.ss.ita.greencity.ui.elements.Button;
 import com.ss.ita.greencity.ui.elements.LanguageSwitcher;
 
 import org.openqa.selenium.WebDriver;
-
+import java.util.concurrent.TimeUnit;
 import static com.ss.ita.greencity.ui.locators.HeaderLocators. ECO_NEWS_LINK;
 import static com.ss.ita.greencity.ui.locators.HeaderLocators.LANGUAGE_SWITCHER;
 import static com.ss.ita.greencity.ui.locators.HeaderLocators.LANGUAGE_SWITCHER_EN;
@@ -37,7 +37,7 @@ public class Header extends BasePage {
 	}
 
 	public EcoNewsPage clickEcoNewsLink() {
-		
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		getEcoNewsLink().click();
 		return new EcoNewsPage(driver);
 	}

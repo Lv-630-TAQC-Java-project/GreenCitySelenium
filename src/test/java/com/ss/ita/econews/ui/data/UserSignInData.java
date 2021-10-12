@@ -1,7 +1,8 @@
 package com.ss.ita.econews.ui.data;
 
 public enum UserSignInData {
-	TARAS_KRASITSKYI("email_registration@ukr.net", "Password_2021");
+	TARAS_KRASITSKYI("email_registration@ukr.net", "Password_2021"),
+	TEST_USER("greencity.test.user@gmail.com", "LeVq3ucLZRVPJuA!");
 
 	private String email;
 	private String password;
