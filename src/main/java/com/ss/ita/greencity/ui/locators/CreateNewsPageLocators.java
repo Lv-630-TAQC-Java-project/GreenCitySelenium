@@ -13,7 +13,9 @@ public enum CreateNewsPageLocators implements BaseLocator {
 	EDUCATION_TAG_BUTTON(By.xpath("//button[normalize-space()='Education']")),
 	SOURCE_AREA(By.xpath("//input[@placeholder='link to external source']")),
 	CONTENT_AREA(By.name("main-area")),
-	PUBLISH_BUTTON(By.cssSelector("button.submit"));
+	PUBLISH_BUTTON(By.cssSelector("button.submit")),
+	CREATE_BUTTON(By.id("create-button"));
+
 
 	private final By path;
 
