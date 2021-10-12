@@ -1,19 +1,16 @@
-package com.ss.ita.econews;
+package com.ss.ita.econews.ui;
 
-import com.ss.ita.elements.News;
-import com.ss.ita.pages.EcoNewsPage;
-import com.ss.ita.pages.HomePage;
+import com.ss.ita.greencity.ui.pages.components.News;
+import com.ss.ita.greencity.ui.pages.EcoNewsPage;
+import com.ss.ita.greencity.ui.pages.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import com.ss.ita.greencity.ui.pages.CreateNewsPage;
-import com.ss.ita.greencity.ui.pages.EcoNewsPage;
-import com.ss.ita.greencity.ui.pages.HomePage;
 import com.ss.ita.econews.ui.runner.TestRuner;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import  com.ss.ita.greencity.ui.locators.*;
 
-import static com.ss.ita.locators.EcoNewsLocators.NEWS_LIST_VIEW;
 
 public class FirstTest extends TestRuner {
 
@@ -45,7 +42,7 @@ public class FirstTest extends TestRuner {
 
         WebDriverWait wait = new WebDriverWait(driver,30);
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#main-content > div > div.list-wrapper > ul > li:nth-child(1) > app-news-list-list-view > div > div")));
-        News news = new News(driver, NEWS_LIST_VIEW);
+        News news = new News(driver, EcoNewsLocators.NEWS_LIST_VIEW);
         Assert.assertEquals(news.getNewsClass(),"eco-news_list-content");
 
     }
