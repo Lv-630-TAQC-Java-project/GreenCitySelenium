@@ -29,13 +29,17 @@ public class LanguageBar extends BasePage {
         return ukrLang;
     }
 
-    public LanguageBar clickOnLanguageSwitcher() {
+    public void clickOnLanguageSwitcher() {
         getLanguageSwitcher().click();
-        return new LanguageBar(driver);
     }
 
-    public HomePage clickOnUkrLanguage() {
+    public void clickOnUkrLanguage() {
         getUkrainianBar().click();
+    }
+
+    public HomePage changeLanguageToUkr(){
+        clickOnLanguageSwitcher();
+        clickOnUkrLanguage();
         return new HomePage(driver);
     }
 }

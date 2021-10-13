@@ -4,7 +4,7 @@ import com.ss.ita.econews.ui.data.UserSignInData;
 import com.ss.ita.econews.ui.runner.TestRuner;
 import com.ss.ita.greencity.ui.elements.TextArea;
 import com.ss.ita.greencity.ui.pages.CreateNewsPage;
-import com.ss.ita.greencity.ui.pages.EcoNewsPage;
+import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
 import com.ss.ita.greencity.ui.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;

@@ -5,6 +5,7 @@ import com.ss.ita.greencity.ui.elements.LanguageSwitcher;
 import com.ss.ita.greencity.ui.elements.Link;
 import com.ss.ita.greencity.ui.locators.CreateNewsPageLocators;
 import com.ss.ita.greencity.ui.locators.HeaderLocators;
+import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
 import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;

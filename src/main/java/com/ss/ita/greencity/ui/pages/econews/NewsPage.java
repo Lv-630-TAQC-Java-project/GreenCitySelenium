@@ -1,6 +1,7 @@
-package com.ss.ita.greencity.ui.pages;
+package com.ss.ita.greencity.ui.pages.econews;
 
 
+import com.ss.ita.greencity.ui.pages.BasePage;
 import org.openqa.selenium.WebDriver;
 
 import static com.ss.ita.greencity.ui.locators.NewsLocators.COMMENT_BUTTON;
