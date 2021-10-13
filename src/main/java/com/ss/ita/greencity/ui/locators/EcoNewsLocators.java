@@ -1,0 +1,21 @@
+package com.ss.ita.greencity.ui.locators;
+
+import org.openqa.selenium.By;
+
+public enum EcoNewsLocators implements BaseLocator {
+    ECO_NEWS_MAIN_HEADER(By.cssSelector("#main-content > div > div:nth-child(1) > div > h1")),
+    TEST_NEWS_TITLE(By.xpath("(//h3[contains(text(),'Test News')])[1]")),
+    CREATE_NEWS_BUTTON(By.id("create-button")),
+    FILTER_BY_NEWS(By.xpath(("//a[normalize-space()='News']")));
+
+    private final By path;
+
+    EcoNewsLocators(By path) {
+        this.path = path;
+    }
+
+    @Override
+    public By getPath() {
+        return path;
+    }
+}
