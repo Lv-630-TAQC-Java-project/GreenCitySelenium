@@ -83,4 +83,17 @@ public class EcoNewsPage extends BasePage {
 		getNewsButton().clickButton();
 		return new NewsPage(driver);
 	}
+
+	public Button getFffNewsButton(){
+		if(newsButton == null){
+			newsButton = new Button(driver,FFFFFFFFFF_NEWS_TITLE);
+		}
+
+		return newsButton;
+	}
+
+	public NewsPage clickFffNewsButton(){
+		getFffNewsButton().clickButton();
+		return new NewsPage(driver);
+	}
 }

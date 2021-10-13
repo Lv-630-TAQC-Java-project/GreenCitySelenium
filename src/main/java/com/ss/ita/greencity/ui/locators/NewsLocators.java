@@ -4,7 +4,7 @@ import com.ss.ita.greencity.ui.locators.BaseLocator;
 import org.openqa.selenium.By;
 
 public enum NewsLocators implements BaseLocator {
-    COMMENT_TEXT_AREA(By.name("content")),
+    COMMENT_TEXT_AREA(By.xpath("//textarea")),
     COMMENT_BUTTON(By.xpath("//button[@class='primary-global-button']"));
 
     private final By path;
