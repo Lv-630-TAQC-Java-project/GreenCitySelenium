@@ -1,8 +1,10 @@
-package com.ss.ita.greencity.ui.pages;
+package com.ss.ita.greencity.ui.pages.econews;
 
 import com.ss.ita.greencity.ui.elements.Button;
 import com.ss.ita.greencity.ui.elements.Label;
 import com.ss.ita.greencity.ui.locators.CreateNewsPageLocators;
+import com.ss.ita.greencity.ui.pages.BasePage;
+import com.ss.ita.greencity.ui.pages.CreateNewsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,6 +21,15 @@ public class EcoNewsPage extends BasePage {
     private Button changeViewButton;
     private Label newsTitle;
     private Button newsButton;
+    private EcoNewsListComponent news;
+
+
+    public EcoNewsListComponent getNews() {
+        if (news == null) {
+            news = new EcoNewsListComponent(driver);
+        }
+        return news;
+    }
 
     public EcoNewsPage(WebDriver driver) {
         super(driver);
