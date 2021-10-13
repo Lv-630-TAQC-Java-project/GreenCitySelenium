@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.ss.ita.greencity.ui.locators.CreateNewsPageLocators;
+import com.ss.ita.greencity.ui.locators.EcoNewsLocators;
 import static com.ss.ita.greencity.ui.locators.EcoNewsLocators.*;
 
 public class EcoNewsPage extends BasePage {
@@ -16,6 +17,7 @@ public class EcoNewsPage extends BasePage {
 	private Label createdNewsTitle;
 	private Button createNewsButton;
 	private Button filterByNews;
+	private Button changeViewButton;
 	private Label newsTitle;
 	private Button newsButton;
 
@@ -69,6 +71,19 @@ public class EcoNewsPage extends BasePage {
 		}
 
 		return newsTitle;
+	}
+
+	public Button getChangeViewButton() {
+		if (changeViewButton == null) {
+			changeViewButton = new Button(driver, CHANGE_VIEW_BUTTON);
+
+		}
+		return changeViewButton;
+	}
+
+	public EcoNewsPage clickChangeViewButton() {
+		getChangeViewButton().clickButton();
+		return this;
 	}
 
 	public Button getNewsButton(){
