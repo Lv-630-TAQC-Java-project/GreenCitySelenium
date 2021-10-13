@@ -1,7 +1,7 @@
 package com.ss.ita.greencity.ui.pages;
 
-import com.ss.ita.greencity.ui.elements.Button;
-import com.ss.ita.greencity.ui.elements.Label;
+import com.ss.ita.greencity.ui.elements.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
