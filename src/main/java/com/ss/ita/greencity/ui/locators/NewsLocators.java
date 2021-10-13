@@ -2,12 +2,13 @@ package com.ss.ita.greencity.ui.locators;
 
 import org.openqa.selenium.By;
 
-public enum MySpaceLocators implements BaseLocator {
-    HOME_PAGE_LINK(By.cssSelector("img.logo"));
+public enum NewsLocators implements BaseLocator {
+    COMMENT_TEXT_AREA(By.name("content")),
+    COMMENT_BUTTON(By.xpath("//button[@class='primary-global-button']"));
 
     private final By path;
 
-    MySpaceLocators(By path) {
+    NewsLocators(By path) {
         this.path = path;
     }
 
@@ -15,5 +16,4 @@ public enum MySpaceLocators implements BaseLocator {
     public By getPath() {
         return path;
     }
-
 }

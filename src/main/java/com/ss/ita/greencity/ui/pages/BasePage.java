@@ -30,6 +30,7 @@ public abstract class BasePage {
     public Header getHeader() {
         return new Header(driver);
     }
+
     public LanguageBar getLanguageBar() {
         return new LanguageBar(driver);
     }

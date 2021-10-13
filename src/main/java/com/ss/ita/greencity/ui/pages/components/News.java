@@ -9,7 +9,7 @@ public class News extends BaseWebElement {
         super(driver, locator);
     }
 
-    public String getNewsClass(){
+    public String getNewsClass() {
         return this.webElement.getAttribute("class");
     }
 }
