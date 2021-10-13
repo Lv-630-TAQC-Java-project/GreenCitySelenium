@@ -175,12 +175,11 @@ public class CreateNewsPage extends BasePage {
         driver.findElement(CONTENT_AREA.getPath()).sendKeys(content);
         return this;
     }
-    public PreviewPage clickPreviewButton(){
+
+    public PreviewPage clickPreviewButton() {
         driver.findElement(PREVIEW_BUTTON.getPath()).click();
         return new PreviewPage(driver);
     }
-
-
 
 
 }

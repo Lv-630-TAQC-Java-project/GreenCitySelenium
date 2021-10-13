@@ -1,6 +1,5 @@
 package com.ss.ita.greencity.ui.locators;
 
-import com.ss.ita.greencity.ui.locators.BaseLocator;
 import org.openqa.selenium.By;
 
 public enum NewsLocators implements BaseLocator {

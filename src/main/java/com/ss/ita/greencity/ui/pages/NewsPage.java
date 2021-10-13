@@ -3,7 +3,8 @@ package com.ss.ita.greencity.ui.pages;
 
 import org.openqa.selenium.WebDriver;
 
-import static com.ss.ita.greencity.ui.locators.NewsLocators.*;
+import static com.ss.ita.greencity.ui.locators.NewsLocators.COMMENT_BUTTON;
+import static com.ss.ita.greencity.ui.locators.NewsLocators.COMMENT_TEXT_AREA;
 
 public class NewsPage extends BasePage {
 
@@ -16,7 +17,7 @@ public class NewsPage extends BasePage {
         return this;
     }
 
-    public NewsPage clickComment(){
+    public NewsPage clickComment() {
         driver.findElement(COMMENT_BUTTON.getPath()).click();
         return this;
     }
