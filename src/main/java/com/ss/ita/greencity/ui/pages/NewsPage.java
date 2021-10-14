@@ -1,11 +1,12 @@
-package com.ss.ita.greencity.ui.pages.econews;
+package com.ss.ita.greencity.ui.pages;
 
 
-import com.ss.ita.greencity.ui.pages.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import static com.ss.ita.greencity.ui.locators.NewsLocators.COMMENT_BUTTON;
-import static com.ss.ita.greencity.ui.locators.NewsLocators.COMMENT_TEXT_AREA;
+import java.util.concurrent.TimeUnit;
+
+import static com.ss.ita.greencity.ui.locators.NewsLocators.*;
 
 public class NewsPage extends BasePage {
 
@@ -13,13 +14,23 @@ public class NewsPage extends BasePage {
         super(driver);
     }
 
+    public int CommentNumber(){
+
+        int count = driver.findElements(By.xpath("//p[contains(@class,'comment-text')]")).size();
+        return count;
+    }
+
     public NewsPage setComment(String comment) {
         driver.findElement(COMMENT_TEXT_AREA.getPath()).sendKeys(comment);
         return this;
     }
 
-    public NewsPage clickComment() {
+    public NewsPage clickCommentButton() {
         driver.findElement(COMMENT_BUTTON.getPath()).click();
         return this;
+    }
+
+    public String getFirstCommentText(){
+        return driver.findElement(FIRST_COMMENT_TEXT.getPath()).getText();
     }
 }
