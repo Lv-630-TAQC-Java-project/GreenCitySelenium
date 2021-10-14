@@ -28,6 +28,7 @@ public class BaseWebElement {
         this.webElement = element.findElement(this.path);
 
     }
+
     public BaseWebElement(WebElement element) {
         this.webElement = element;
     }

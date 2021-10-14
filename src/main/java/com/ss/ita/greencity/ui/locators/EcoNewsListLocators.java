@@ -2,13 +2,14 @@ package com.ss.ita.greencity.ui.locators;
 
 import org.openqa.selenium.By;
 
-public enum NewsLocators implements BaseLocator {
-    COMMENT_TEXT_AREA(By.xpath("//textarea")),
-    COMMENT_BUTTON(By.xpath("//button[@class='primary-global-button']"));
+public enum EcoNewsListLocators implements BaseLocator {
+
+    ITEMS(By.cssSelector(".gallery-view-li-active"));
+
 
     private final By path;
 
-    NewsLocators(By path) {
+    EcoNewsListLocators(By path) {
         this.path = path;
     }
 
@@ -16,4 +17,5 @@ public enum NewsLocators implements BaseLocator {
     public By getPath() {
         return path;
     }
+
 }
