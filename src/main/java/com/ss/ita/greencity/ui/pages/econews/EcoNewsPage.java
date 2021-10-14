@@ -117,29 +117,32 @@ public class EcoNewsPage extends BasePage {
         getNewsButton().clickButton();
         return new NewsPage(driver);
     }
-    public EcoNewsPage getScroll() {
-        driver.findElement(FOOTER.getPath());
-        return new EcoNewsPage(driver);
-    }
+
     public EcoNewsPage scrollPageToTheBottom() {
-        WebElement scrollPage = (new WebDriverWait(driver, 5))
+        new WebDriverWait(driver, 5)
                 .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".list-wrapper")));
         while (true) {
             ((JavascriptExecutor) driver)
                     .executeScript("window.scrollTo(0, document.body.scrollHeight)");
             try {
-//                try {
-//                    Thread.sleep(1000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-                WebElement circle = (new WebDriverWait(driver, 5)).until(ExpectedConditions
+                new WebDriverWait(driver, 5).until(ExpectedConditions
                         .visibilityOfElementLocated(By.xpath("//*[name()='circle' and contains(@cx,'50%')]")));
             }
-            catch(Throwable breakIterator) {
+
+            catch (Throwable breakIterator) {
                 break;
             }
-            // wait till sircle dissapear
+            while (true) {
+                ((JavascriptExecutor) driver)
+                        .executeScript("window.scrollTo(0, document.body.scrollHeight)");
+                try {
+                    new WebDriverWait(driver, 5).until(ExpectedConditions.not(ExpectedConditions
+                            .invisibilityOfElementLocated(By.xpath("//*[name()='circle' and contains(@cx,'50%')]"))));
+                } catch (Throwable breakIterator) {
+                    break;
+                }
+                // wait till sircle dissapear
+            }
         }
         return new EcoNewsPage(driver);
     }
