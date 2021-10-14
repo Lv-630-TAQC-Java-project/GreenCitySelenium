@@ -1,10 +1,7 @@
 package com.ss.ita.greencity.ui.pages;
 
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import java.util.concurrent.TimeUnit;
 
 import static com.ss.ita.greencity.ui.locators.NewsLocators.*;
 
@@ -14,7 +11,7 @@ public class NewsPage extends BasePage {
         super(driver);
     }
 
-    public int CommentNumber(){
+    public int CommentNumber() {
 
         int count = driver.findElements(By.xpath("//p[contains(@class,'comment-text')]")).size();
         return count;
@@ -30,7 +27,7 @@ public class NewsPage extends BasePage {
         return this;
     }
 
-    public String getFirstCommentText(){
+    public String getFirstCommentText() {
         return driver.findElement(FIRST_COMMENT_TEXT.getPath()).getText();
     }
 }

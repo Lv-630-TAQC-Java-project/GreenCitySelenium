@@ -1,14 +1,13 @@
 package com.ss.ita.econews.ui.econews;
 
 import com.ss.ita.econews.ui.runner.TestRuner;
-import com.ss.ita.greencity.ui.pages.HomePage;
-import com.ss.ita.greencity.ui.pages.NewsPage;
-import org.testng.Assert;
+import com.ss.ita.greencity.ui.pages.*;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
 import static com.ss.ita.econews.ui.data.UserSignInData.VLAD_DMYTRIV;
+import static org.testng.Assert.*;
 
 public class CommentTest extends TestRuner {
 
@@ -28,7 +27,7 @@ public class CommentTest extends TestRuner {
                 .setComment(commentText)
                 .clickCommentButton();
         int secondCommentNumber = new NewsPage(driver).CommentNumber();
-        Assert.assertTrue(secondCommentNumber == commentNumber + 1);
-        Assert.assertTrue(newsPage.getFirstCommentText().equals(commentText));
+        assertTrue(secondCommentNumber == commentNumber + 1);
+        assertTrue(newsPage.getFirstCommentText().equals(commentText));
     }
 }

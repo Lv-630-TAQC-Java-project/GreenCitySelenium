@@ -6,6 +6,7 @@ public enum NewsLocators implements BaseLocator {
     COMMENT_TEXT_AREA(By.xpath("//textarea")),
     COMMENT_BUTTON(By.xpath("//button[@class='primary-global-button']")),
     FIRST_COMMENT_TEXT(By.xpath("//p[contains(@class,'comment-text')][1]"));
+
     private final By path;
 
     NewsLocators(By path) {
