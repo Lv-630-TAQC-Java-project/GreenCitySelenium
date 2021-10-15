@@ -2,6 +2,7 @@ package com.ss.ita.econews.ui.econews;
 
 import com.ss.ita.econews.ui.data.UserSignInData;
 import com.ss.ita.econews.ui.runner.TestRuner;
+import com.ss.ita.greencity.ui.locators.EcoNewsListLocators;
 import com.ss.ita.greencity.ui.locators.EcoNewsLocators;
 import com.ss.ita.greencity.ui.pages.HomePage;
 import com.ss.ita.greencity.ui.pages.econews.EcoNewsListComponent;
@@ -29,10 +30,10 @@ public class NewsListTest extends TestRuner {
 
         ecoNewsPage.scrollPageToTheBottom();
         int count = driver.findElements(
-                By.cssSelector(".list.gallery-view-active > .gallery-view-li-active")).size();
+                EcoNewsListLocators.ITEMS.getPath()).size();
         System.out.println("Count: " + count);
         String total_Items = driver.findElement(
-                By.cssSelector("div[class='main-wrapper'] app-remaining-count div h2")).getText();
+                EcoNewsListLocators.TOTAL_ITEMS.getPath()).getText();
         String[] splited = total_Items.split(" ");
         Assert.assertEquals(count, Integer.parseInt(splited[0]));
         }

@@ -4,7 +4,9 @@ import org.openqa.selenium.By;
 
 public enum EcoNewsListLocators implements BaseLocator {
 
-    ITEMS(By.cssSelector(".gallery-view-li-active"));
+    ITEMS(By.cssSelector(".gallery-view-li-active")),
+    TOTAL_ITEMS(By.cssSelector("div[class='main-wrapper'] app-remaining-count div h2")),
+    LOADING_CIRCLE(By.cssSelector("mat-spinner[role='progressbar']"));
 
 
     private final By path;

@@ -3,6 +3,7 @@ package com.ss.ita.greencity.ui.pages.econews;
 import com.ss.ita.greencity.ui.elements.Button;
 import com.ss.ita.greencity.ui.elements.Label;
 import com.ss.ita.greencity.ui.locators.CreateNewsPageLocators;
+import com.ss.ita.greencity.ui.locators.EcoNewsListLocators;
 import com.ss.ita.greencity.ui.locators.EcoNewsLocators;
 import com.ss.ita.greencity.ui.pages.BasePage;
 import com.ss.ita.greencity.ui.pages.CreateNewsPage;
@@ -124,7 +125,7 @@ public class EcoNewsPage extends BasePage {
                     .executeScript("window.scrollTo(0, document.body.scrollHeight)");
             try {
                 new WebDriverWait(driver, 1).until(ExpectedConditions
-                        .visibilityOfElementLocated(By.cssSelector("mat-spinner[role='progressbar']")));
+                        .visibilityOfElementLocated(EcoNewsListLocators.LOADING_CIRCLE.getPath()));
             } catch (Throwable breakIterator) {
                 break;
             }
