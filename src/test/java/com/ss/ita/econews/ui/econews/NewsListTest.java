@@ -28,8 +28,8 @@ public class NewsListTest extends TestRuner {
         Thread.sleep(5000);
 
         ecoNewsPage.scrollPageToTheBottom();
-//        int count = driver.findElements(
-//                By.cssSelector(".list.gallery-view-active > .gallery-view-li-active")).size();
+        int count = driver.findElements(
+                By.cssSelector(".list.gallery-view-active > .gallery-view-li-active")).size();
         System.out.println("Count: " + count);
         String total_Items = driver.findElement(
                 By.cssSelector("div[class='main-wrapper'] app-remaining-count div h2")).getText();
