@@ -119,29 +119,14 @@ public class EcoNewsPage extends BasePage {
     }
 
     public EcoNewsPage scrollPageToTheBottom() {
-        new WebDriverWait(driver, 5)
-                .until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".list-wrapper")));
         while (true) {
             ((JavascriptExecutor) driver)
                     .executeScript("window.scrollTo(0, document.body.scrollHeight)");
             try {
-                new WebDriverWait(driver, 5).until(ExpectedConditions
-                        .visibilityOfElementLocated(By.xpath("//*[name()='circle' and contains(@cx,'50%')]")));
-            }
-
-            catch (Throwable breakIterator) {
+                new WebDriverWait(driver, 1).until(ExpectedConditions
+                        .visibilityOfElementLocated(By.cssSelector("mat-spinner[role='progressbar']")));
+            } catch (Throwable breakIterator) {
                 break;
-            }
-            while (true) {
-                ((JavascriptExecutor) driver)
-                        .executeScript("window.scrollTo(0, document.body.scrollHeight)");
-                try {
-                    new WebDriverWait(driver, 5).until(ExpectedConditions.not(ExpectedConditions
-                            .invisibilityOfElementLocated(By.xpath("//*[name()='circle' and contains(@cx,'50%')]"))));
-                } catch (Throwable breakIterator) {
-                    break;
-                }
-                // wait till sircle dissapear
             }
         }
         return new EcoNewsPage(driver);

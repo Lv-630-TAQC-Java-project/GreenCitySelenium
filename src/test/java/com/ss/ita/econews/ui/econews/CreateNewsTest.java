@@ -19,10 +19,10 @@ public class CreateNewsTest extends TestRuner {
                 .clickEcoNewsLink()
                 .clickCreateNewsButton()
                 .clickTagNewsButton();
-        TextArea setTitleArea = new CreateNewsPage(driver).setTitleTextArea("Test News");
-        TextArea setContentArea = new CreateNewsPage(driver).setContentArea();
+        new CreateNewsPage(driver).setTitleTextArea("Test News");
+        new CreateNewsPage(driver).setContentArea();
         createNewsPage.clickPublishButton();
-        EcoNewsPage clickFilterBy = new EcoNewsPage(driver).clickFilterByNews();
+        new EcoNewsPage(driver).clickFilterByNews();
         String title = new EcoNewsPage(driver).getCreatedNewsTitle().getText();
         Assert.assertEquals(title, "Test News");
     }
