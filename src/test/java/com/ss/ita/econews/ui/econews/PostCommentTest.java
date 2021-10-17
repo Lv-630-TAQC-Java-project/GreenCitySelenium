@@ -35,8 +35,16 @@ public class PostCommentTest extends TestRuner {
 
         // waiting for comments label to update its count
         WebDriverWait wait = new WebDriverWait(driver, 3);
-        wait.until(ExpectedConditions.not(
-                ExpectedConditions.textToBePresentInElement(driver.findElement(COMMENTS_COUNT_LABEL.getPath()), defaultCommentsCount)));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(COMMENTS_COUNT_LABEL.getPath()));
+
+        // This is the worst way to wait,
+        // but I couldn't find the correct wait.until(...)
+        // to wait for label to update itself
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         Assert.assertEquals(newsPage.getCommentsCount().replaceAll("\\D", ""), "1");
     }
