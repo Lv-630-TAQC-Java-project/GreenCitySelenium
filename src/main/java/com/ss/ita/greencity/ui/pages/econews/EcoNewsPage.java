@@ -23,6 +23,7 @@ public class EcoNewsPage extends BasePage {
     private Label newsTitle;
     private Button newsButton;
     private EcoNewsListComponent news;
+    private Label newsTag;
 
 
     public EcoNewsListComponent getNews() {
@@ -109,6 +110,12 @@ public class EcoNewsPage extends BasePage {
     public NewsPage clickNewsButton() {
         getNewsButton().clickButton();
         return new NewsPage(driver);
+    }
+    public Label getFilterByNewsTag() {
+        if (newsTag == null){
+            newsTag = new Label(driver, FILTER_BY_NEWS_TAG);
+        }
+        return newsTag;
     }
 
     public Button getFffNewsButton(){

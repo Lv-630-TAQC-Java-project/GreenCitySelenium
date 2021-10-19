@@ -6,24 +6,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static com.ss.ita.greencity.ui.locators.HomePageLocators.HOME_PAGE_TITLE;
+import static com.ss.ita.greencity.ui.locators.HomePageLocators.HOME_PAGE_TITLE_UKR;
 
 public class HomePage extends BasePage {
-    private Label mainTitle;
+    private Label mainTitleUkr;
 
     public HomePage(WebDriver driver) {
         super(driver);
     }
 
-    public Label getHomePageTitle() {
+    public Label getHomePageTitleUkr() {
 
-        if (mainTitle == null) {
+        if (mainTitleUkr == null) {
             WebDriverWait wait = new WebDriverWait(driver, 10);
             wait.until(ExpectedConditions.visibilityOfElementLocated(
                     By.xpath("//h1[text()='Новий спосіб виховати в собі корисні звички']")));
-            mainTitle = new Label(driver, HOME_PAGE_TITLE);
+            mainTitleUkr = new Label(driver, HOME_PAGE_TITLE_UKR);
         }
-        return mainTitle;
+        return mainTitleUkr;
     }
 
 }
