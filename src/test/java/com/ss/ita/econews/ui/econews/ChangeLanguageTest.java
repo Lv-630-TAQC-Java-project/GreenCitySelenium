@@ -12,12 +12,11 @@ import org.testng.annotations.Test;
 
 public class ChangeLanguageTest extends TestRuner {
     @Test
-    public void changeLanguageToUkr() {
+    public void changeLanguageFromDefaultToUkr() {
         HomePage homePage = new HomePage(driver).getLanguageBar()
-                .clickOnLanguageSwitcher()
-                .clickOnUkrLanguage();
+                .changeLanguageToUkr();
 
-        String homePageTitle = homePage.getHomePageTitle().getText();
+        String homePageTitle = homePage.getHomePageTitleUkr().getText();
         Assert.assertEquals(homePageTitle, "Новий спосіб виховати в собі корисні звички");
     }
 
