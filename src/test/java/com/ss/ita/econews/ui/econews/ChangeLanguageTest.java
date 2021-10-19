@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 public class ChangeLanguageTest extends TestRuner {
     @Test
-    public void changeLanguageToUkr() {
+    public void changeLanguageFromDefaultToUkr() {
         HomePage homePage = new HomePage(driver).getLanguageBar()
                 .changeLanguageToUkr();
 
