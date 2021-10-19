@@ -1,9 +1,6 @@
 package com.ss.ita.greencity.ui.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BasePage {
     protected WebDriver driver;
@@ -20,11 +17,6 @@ public abstract class BasePage {
     public BasePage goToUrl(String url) {
         driver.get(url);
         return this;
-    }
-
-    public void waitVisibilityOfElement(long timeToWait, By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, timeToWait);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public Header getHeader() {

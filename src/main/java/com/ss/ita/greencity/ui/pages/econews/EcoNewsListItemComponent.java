@@ -36,4 +36,9 @@ public class EcoNewsListItemComponent extends BasePage {
         root.click();
         return new NewsPage(driver);
     }
+
+    public String getNewsClass() {
+        return this.root.getAttribute("class");
+    }
+
 }
