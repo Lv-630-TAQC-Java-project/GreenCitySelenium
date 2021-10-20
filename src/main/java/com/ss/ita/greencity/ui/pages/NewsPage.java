@@ -1,5 +1,6 @@
 package com.ss.ita.greencity.ui.pages;
 
+import com.ss.ita.greencity.ui.elements.Button;
 import com.ss.ita.greencity.ui.elements.TextArea;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,6 +14,7 @@ public class NewsPage extends BasePage {
     }
 
     private TextArea commentInput;
+    private Button postReply;
 
     public int CommentNumber() {
 
@@ -47,6 +49,18 @@ public class NewsPage extends BasePage {
 
     public String getCommentsCount() {
         return driver.findElement(COMMENTS_COUNT_LABEL.getPath()).getAttribute("textContent");
+    }
+
+    public NewsPage clickFirstReply() {
+        driver.findElement(FIRST_REPLY_BUTTON.getPath()).click();
+        return this;
+    }
+
+    public Button getPostReplyButton() {
+        if (postReply == null){
+            postReply = new Button(driver, POST_REPLY_BUTTON);
+        }
+        return postReply;
     }
 
 }
