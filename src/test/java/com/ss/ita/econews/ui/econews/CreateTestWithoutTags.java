@@ -6,7 +6,6 @@ import com.ss.ita.greencity.ui.locators.CreateNewsPageLocators;
 import com.ss.ita.greencity.ui.pages.CreateNewsPage;
 import com.ss.ita.greencity.ui.pages.HomePage;
 import com.ss.ita.greencity.ui.pages.PreviewPage;
-import com.ss.ita.greencity.ui.pages.econews.NewsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
