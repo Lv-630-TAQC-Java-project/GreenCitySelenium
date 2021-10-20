@@ -6,26 +6,36 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static com.ss.ita.econews.ui.data.UserSignInData.VLAD_DMYTRIV;
+
 import static org.testng.Assert.*;
 
 public class CommentTest extends TestRuner {
 
-    @Test
-    public void comment() {
+   public NewsPage goToFffNews() {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        String commentText = "comment";
-        new HomePage(driver)
-                .getHeader()
-                .login(VLAD_DMYTRIV.getEmail(), VLAD_DMYTRIV.getPassword());
+
+
         NewsPage newsPage = new HomePage(driver)
                 .getHeader()
                 .clickEcoNewsLink()
                 .clickFffNewsButton();
-        int commentNumber = new NewsPage(driver).CommentNumber();
-        newsPage
+
+        return newsPage;
+    }
+
+    private NewsPage setComment() {
+        String commentText = "comment";
+        return goToFffNews()
                 .setComment(commentText)
                 .clickCommentButton();
+    }
+
+    @Test
+    public void comment() {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        int commentNumber = new NewsPage(driver).CommentNumber();
+
         int secondCommentNumber = new NewsPage(driver).CommentNumber();
         assertTrue(secondCommentNumber == commentNumber + 1);
         assertTrue(newsPage.getFirstCommentText().equals(commentText));
