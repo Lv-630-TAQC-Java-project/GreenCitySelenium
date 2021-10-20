@@ -3,6 +3,7 @@ package com.ss.ita.greencity.ui.pages.econews;
 import com.ss.ita.greencity.ui.elements.Button;
 import com.ss.ita.greencity.ui.elements.Label;
 import com.ss.ita.greencity.ui.locators.CreateNewsPageLocators;
+import com.ss.ita.greencity.ui.locators.EcoNewsListLocators;
 import com.ss.ita.greencity.ui.pages.BasePage;
 import com.ss.ita.greencity.ui.pages.CreateNewsPage;
 import org.openqa.selenium.WebDriver;
@@ -95,6 +96,8 @@ public class EcoNewsPage extends BasePage {
 
     public EcoNewsPage clickChangeViewButton() {
         getChangeViewButton().clickButton();
+        WebDriverWait wait = new WebDriverWait(driver, 2000);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(EcoNewsListLocators.NEWS_LIST_VIEW.getPath()));
         return this;
     }
 
