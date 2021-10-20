@@ -9,7 +9,6 @@ public enum NewsLocators implements BaseLocator {
     COMMENTS_COUNT_LABEL(By.xpath(".//app-comments-container//p[2]")), ///text()[normalize-space()][1]
     COMMENTS_LIST(By.xpath(".//app-comments-list"));
 
-
     private final By path;
 
     NewsLocators(By path) {
