@@ -12,6 +12,7 @@ public enum EcoNewsLocators implements BaseLocator {
     CHANGE_VIEW_BUTTON(By.cssSelector("#main-content > div > div.main-wrapper > app-change-view-button > div > span.btn-bars > em")),
     NEWS_LIST_VIEW(By.cssSelector("#main-content > div > div.list-wrapper > ul > li:nth-child(1) > app-news-list-list-view > div > div"));
 
+
     private final By path;
 
     EcoNewsLocators(By path) {
