@@ -6,11 +6,12 @@ import com.ss.ita.greencity.ui.pages.CreateNewsPage;
 import com.ss.ita.greencity.ui.pages.HomePage;
 import com.ss.ita.greencity.ui.pages.NewsPage;
 import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import static com.ss.ita.greencity.ui.locators.NewsLocators.COMMENTS_COUNT_LABEL;
+
+import java.util.concurrent.TimeUnit;
+
+import static com.ss.ita.greencity.ui.locators.NewsLocators.COMMENTS_LIST;
 
 public class PostCommentTest extends TestRuner {
     @Test
@@ -26,25 +27,13 @@ public class PostCommentTest extends TestRuner {
         createNewsPage.setContentArea();
         createNewsPage.clickPublishButton();
 
-        EcoNewsPage ecoNewsPage = createNewsPage.getHeader().clickEcoNewsLink();
+        NewsPage newsPage = createNewsPage.getHeader().clickEcoNewsLink()
+                .getNews().get(0).click()
+                .setComment("some comment")
+                .clickComment();
 
-        NewsPage newsPage = ecoNewsPage.getNews().get(0).click();
-        String defaultCommentsCount = newsPage.getCommentsCount();
-
-        newsPage.setComment("some comment").clickComment();
-
-        // waiting for comments label to update its count
-        WebDriverWait wait = new WebDriverWait(driver, 3);
-        wait.until(ExpectedConditions.visibilityOfElementLocated(COMMENTS_COUNT_LABEL.getPath()));
-
-        // This is the worst way to wait,
-        // but I couldn't find the correct wait.until(...)
-        // to wait for label to update itself
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        // waiting for comment to appear
+        while(newsPage.getComments().isEmpty());
 
         Assert.assertEquals(newsPage.getCommentsCount().replaceAll("\\D", ""), "1");
     }

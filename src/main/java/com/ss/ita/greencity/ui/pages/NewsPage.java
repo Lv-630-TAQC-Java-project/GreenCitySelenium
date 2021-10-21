@@ -3,6 +3,9 @@ package com.ss.ita.greencity.ui.pages;
 import com.ss.ita.greencity.ui.elements.TextArea;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 import static com.ss.ita.greencity.ui.locators.NewsLocators.*;
 
@@ -47,6 +50,10 @@ public class NewsPage extends BasePage {
 
     public String getCommentsCount() {
         return driver.findElement(COMMENTS_COUNT_LABEL.getPath()).getAttribute("textContent");
+    }
+
+    public List<WebElement> getComments(){
+        return driver.findElements(COMMENTS_LIST.getPath());
     }
 
 }
