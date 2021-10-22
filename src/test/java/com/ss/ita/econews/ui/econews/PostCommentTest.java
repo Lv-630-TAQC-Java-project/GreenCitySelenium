@@ -4,7 +4,7 @@ import com.ss.ita.econews.ui.data.UserSignInData;
 import com.ss.ita.econews.ui.runner.TestRuner;
 import com.ss.ita.greencity.ui.pages.CreateNewsPage;
 import com.ss.ita.greencity.ui.pages.HomePage;
-import com.ss.ita.greencity.ui.pages.NewsPage;
+import com.ss.ita.greencity.ui.pages.news.NewsPage;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -28,8 +28,8 @@ public class PostCommentTest extends TestRuner {
 
         NewsPage newsPage = createNewsPage.getHeader().clickEcoNewsLink()
                 .getNews().get(0).click()
-                .setComment("some comment")
-                .clickComment();
+                .setCommentText("some comment")
+                .clickCommentButton();
 
         // waiting for comment to appear
         WebDriverWait wait = new WebDriverWait(driver, 3);
@@ -38,6 +38,5 @@ public class PostCommentTest extends TestRuner {
         int commentsListSize = newsPage.getComments().size();
         int commentsCountInLabel = Integer.parseInt(newsPage.getCommentsCount().replaceAll("\\D", ""));
         Assert.assertEquals(commentsCountInLabel, commentsListSize);
-
     }
 }
