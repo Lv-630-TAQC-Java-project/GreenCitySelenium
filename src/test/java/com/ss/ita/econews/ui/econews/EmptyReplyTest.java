@@ -16,8 +16,11 @@ public class EmptyReplyTest extends TestRuner {
                 .clickEcoNewsLink()
                 .getNews().get(0)
                 .click()
-                .clickFirstReply()
-                .getPostReplyButton();
+                .createAndPublicComment("Test comment")
+                .getComment()
+                .get(0)
+                .clickReplyButton()
+                .getPublishReplyButton();
         Assert.assertFalse(postReplyButton.isEnabled());
     }
 }

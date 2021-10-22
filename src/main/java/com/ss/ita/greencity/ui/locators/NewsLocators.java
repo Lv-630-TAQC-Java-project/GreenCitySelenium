@@ -7,9 +7,7 @@ public enum NewsLocators implements BaseLocator {
     COMMENT_BUTTON(By.xpath("//button[@class='primary-global-button']")),
     FIRST_COMMENT_TEXT(By.xpath("//p[contains(@class,'comment-text')][1]")),
     COMMENTS_COUNT_LABEL(By.xpath(".//app-comments-container//p[2]")), ///text()[normalize-space()][1]
-    COMMENTS_LIST(By.xpath(".//app-comments-list")),
-    FIRST_REPLY_BUTTON(By.xpath("(//button[@class = 'cta-btn reply'])[1]")),
-    POST_REPLY_BUTTON(By.xpath("//button[@class = 'primary-global-button' and text() = ' Reply ']"));
+    COMMENTS_LIST(By.xpath(".//app-comments-list"));
 
     private final By path;
 
