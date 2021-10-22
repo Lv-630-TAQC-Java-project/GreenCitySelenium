@@ -6,6 +6,7 @@ import com.ss.ita.greencity.ui.locators.CreateNewsPageLocators;
 import com.ss.ita.greencity.ui.locators.EcoNewsListLocators;
 import com.ss.ita.greencity.ui.pages.BasePage;
 import com.ss.ita.greencity.ui.pages.CreateNewsPage;
+import com.ss.ita.greencity.ui.pages.news.NewsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -118,5 +119,18 @@ public class EcoNewsPage extends BasePage {
             newsTag = new Label(driver, FILTER_BY_NEWS_TAG);
         }
         return newsTag;
+    }
+
+    public Button getFffNewsButton(){
+        if(newsButton == null){
+            newsButton = new Button(driver,FFFFFFFFFF_NEWS_TITLE);
+        }
+
+        return newsButton;
+    }
+
+    public NewsPage clickFffNewsButton(){
+        getFffNewsButton().clickButton();
+        return new NewsPage(driver);
     }
 }

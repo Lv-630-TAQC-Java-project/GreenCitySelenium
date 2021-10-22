@@ -38,7 +38,7 @@ public class CreateNewsPage extends BasePage {
     }
 
     public CreateNewsPage setTextArea(String text) {
-        getTextArea().clicTextArea();
+        getTextArea().clickTextArea();
         getTextArea().clearTextArea();
         getTextArea().sendKeysTextArea(text);
         return this;

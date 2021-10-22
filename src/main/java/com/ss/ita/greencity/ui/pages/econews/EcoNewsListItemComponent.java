@@ -3,6 +3,7 @@ package com.ss.ita.greencity.ui.pages.econews;
 import com.ss.ita.greencity.ui.elements.Label;
 import com.ss.ita.greencity.ui.locators.EcoNewsListItemLocators;
 import com.ss.ita.greencity.ui.pages.BasePage;
+import com.ss.ita.greencity.ui.pages.news.NewsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
