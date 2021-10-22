@@ -9,7 +9,11 @@ public enum NewsListCommentsLocators implements BaseLocator {
     DELETE_FIRST_COMMENT_BUTTON(By.xpath("//span[contains(text(),' Delete ')][1]")),
     APPROVE_DELETING_COMMENT_BUTTON(By.xpath("//button[contains(text(),' Yes, delete ')]")),
     VIEW_REPLY_BUTTON(By.xpath("//button[@class='cta-btn view ng-star-inserted'][1]")),
-    IS_COMMENT_POSTED(By.xpath("//p[@class='comment-text ng-star-inserted']"));
+    IS_COMMENT_POSTED(By.xpath("//p[@class='comment-text ng-star-inserted']")),
+    EDIT_COMMENT_BUTTON(By.xpath("//button[contains(@class,'edit')]")),
+    EDIT_COMMENT_FIELD(By.xpath("//textarea[contains(@class,'edit-text-input')]")),
+    EDIT_SAVE_COMMENT_BUTTON(By.xpath("//button[contains(@class,'save-edit')]"));
+
 
     private final By path;
 

@@ -5,8 +5,6 @@ import com.ss.ita.greencity.ui.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static com.ss.ita.greencity.ui.locators.NewsListCommentsLocators.*;
 import static java.lang.String.format;
@@ -16,6 +14,7 @@ public class NewsListCommentComponent extends BasePage {
     private WebElement root;
     private Label content;
     private TextArea replyInput;
+    private TextArea editCommentField;
 
     public NewsListCommentComponent(WebDriver driver, WebElement root) {
         super(driver);
@@ -84,5 +83,30 @@ public class NewsListCommentComponent extends BasePage {
         return this;
     }
 
+    // Edit methods
 
+    public NewsListCommentComponent clickEditComment() {
+        new Button(driver, EDIT_COMMENT_BUTTON).clickButton();
+        editCommentField = new TextArea(driver, EDIT_COMMENT_FIELD);
+        return this;
+    }
+
+    public NewsListCommentComponent setEditFieldText(String text) {
+        if (editCommentField == null) clickEditComment();
+
+        editCommentField.sendKeysTextArea(text);
+        return this;
+    }
+
+    public NewsListCommentComponent clickSaveChangesButton() {
+        new Button(driver, EDIT_SAVE_COMMENT_BUTTON).clickButton();
+        return this;
+    }
+
+    // general method
+    public NewsListCommentComponent editComment(String newText) {
+        return clickEditComment()
+                .setEditFieldText(newText)
+                .clickSaveChangesButton();
+    }
 }
