@@ -29,7 +29,7 @@ public class CreateTestWithoutTags extends TestRuner {
         WebElement publishButton = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 CreateNewsPageLocators.PUBLISH_BUTTON.getPath()));
         Assert.assertFalse(new CreateNewsPage(driver).
-                isClickable(publishButton), "Publish button is clickable, but shouldn`t be");
+                isClickable(publishButton), "Publish button is clickable, but shouldn't be");
 
         createNewsPage.clickPreviewButton();
 

@@ -1,6 +1,7 @@
 package com.ss.ita.greencity.ui.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -36,7 +37,7 @@ public abstract class BasePage {
             WebDriverWait element = new WebDriverWait(driver, 1);
             element.until(ExpectedConditions.elementToBeClickable(webElement));
             return true;
-        } catch (Exception e){
+        } catch (TimeoutException e){
             return false;
         }
     }
@@ -46,7 +47,7 @@ public abstract class BasePage {
             WebDriverWait element = new WebDriverWait(driver, 1);
             element.until(ExpectedConditions.visibilityOfElementLocated(webElement));
             return true;
-        } catch (Exception e){
+        } catch (TimeoutException e){
             return false;
         }
     }
