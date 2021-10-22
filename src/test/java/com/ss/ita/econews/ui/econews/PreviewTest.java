@@ -1,11 +1,11 @@
 package com.ss.ita.econews.ui.econews;
 
-import com.ss.ita.econews.ui.data.UserSignInData;
 import com.ss.ita.econews.ui.runner.TestRuner;
-import com.ss.ita.greencity.ui.pages.HomePage;
-import com.ss.ita.greencity.ui.pages.PreviewPage;
-import org.testng.Assert;
+import com.ss.ita.greencity.ui.pages.*;
 import org.testng.annotations.Test;
+
+import static com.ss.ita.econews.ui.data.UserSignInData.VLAD_DMYTRIV;
+import static org.testng.Assert.*;
 
 public class PreviewTest extends TestRuner {
 
@@ -16,7 +16,7 @@ public class PreviewTest extends TestRuner {
         String content = "test content preview";
         new HomePage(driver)
                 .getHeader()
-                .login(UserSignInData.VLAD_DMYTRIV.getEmail(), UserSignInData.VLAD_DMYTRIV.getPassword());
+                .login(VLAD_DMYTRIV.getEmail(), VLAD_DMYTRIV.getPassword());
         PreviewPage previewPage = new HomePage(driver)
                 .getHeader()
                 .clickEcoNewsLink()
@@ -26,8 +26,8 @@ public class PreviewTest extends TestRuner {
                 .setSource(source)
                 .setContent(content)
                 .clickPreviewButton();
-        Assert.assertEquals(title, previewPage.getTitle());
-        Assert.assertEquals(source, previewPage.getSource());
-        Assert.assertTrue(previewPage.getContent().contains(content));
+        assertEquals(title, previewPage.getTitle());
+        assertEquals(source, previewPage.getSource());
+        assertTrue(previewPage.getContent().contains(content));
     }
 }
