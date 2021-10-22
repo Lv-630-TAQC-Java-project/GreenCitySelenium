@@ -5,17 +5,16 @@ import com.ss.ita.econews.ui.runner.TestRuner;
 import com.ss.ita.greencity.ui.pages.CreateNewsPage;
 import com.ss.ita.greencity.ui.pages.HomePage;
 import com.ss.ita.greencity.ui.pages.NewsPage;
-import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
-import java.util.concurrent.TimeUnit;
 
 import static com.ss.ita.greencity.ui.locators.NewsLocators.COMMENTS_LIST;
 
 public class PostCommentTest extends TestRuner {
     @Test
-    public void postComment(){
+    public void postComment() {
         CreateNewsPage createNewsPage = new HomePage(driver)
                 .getHeader()
                 .login(UserSignInData.TEST_USER.getEmail(), UserSignInData.TEST_USER.getPassword())
@@ -33,8 +32,12 @@ public class PostCommentTest extends TestRuner {
                 .clickComment();
 
         // waiting for comment to appear
-        while(newsPage.getComments().isEmpty());
+        WebDriverWait wait = new WebDriverWait(driver, 3);
+        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(COMMENTS_LIST.getPath()));
 
-        Assert.assertEquals(newsPage.getCommentsCount().replaceAll("\\D", ""), "1");
+        int commentsListSize = newsPage.getComments().size();
+        int commentsCountInLabel = Integer.parseInt(newsPage.getCommentsCount().replaceAll("\\D", ""));
+        Assert.assertEquals(commentsCountInLabel, commentsListSize);
+
     }
 }
