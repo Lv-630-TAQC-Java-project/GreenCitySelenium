@@ -4,7 +4,7 @@ import com.ss.ita.econews.ui.data.UserSignInData;
 import com.ss.ita.econews.ui.runner.TestRuner;
 import com.ss.ita.greencity.ui.pages.CreateNewsPage;
 import com.ss.ita.greencity.ui.pages.HomePage;
-import com.ss.ita.greencity.ui.pages.NewsPage;
+import com.ss.ita.greencity.ui.pages.news.NewsPage;
 import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -31,7 +31,7 @@ public class PostCommentTest extends TestRuner {
         NewsPage newsPage = ecoNewsPage.getNews().get(0).click();
         String defaultCommentsCount = newsPage.getCommentsCount();
 
-        newsPage.setComment("some comment").clickComment();
+        newsPage.setCommentText("some comment").clickCommentButton();
 
         // waiting for comments label to update its count
         WebDriverWait wait = new WebDriverWait(driver, 3);
