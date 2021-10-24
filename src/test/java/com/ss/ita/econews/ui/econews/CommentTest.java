@@ -1,6 +1,5 @@
 package com.ss.ita.econews.ui.econews;
 
-import com.ss.ita.econews.ui.data.UserSignInData;
 import com.ss.ita.econews.ui.runner.TestRuner;
 import com.ss.ita.greencity.ui.pages.*;
 import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
@@ -34,8 +33,7 @@ public class CommentTest extends TestRuner {
                 .clickEcoNewsLink();
 
         NewsPage newsPage = ecoNewsPage
-                .getNews()
-                .get(0)
+                .getNewsByIndex(0)
                 .click();
         return newsPage;
     }
@@ -57,26 +55,36 @@ public class CommentTest extends TestRuner {
     public void verifyCommentDeletingWithRepliesTest() {
         String commentText = UUID.randomUUID().toString();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
         NewsPage newsPage = loginAndCreateNews();
         int commentsNumberBeforePostingComment = newsPage.numbersOfComments();
         newsPage.createAndPublicComment(commentText);
         int commentsNumberAfterPostingComment = newsPage.numbersOfComments();
+
         assertTrue(commentsNumberAfterPostingComment == commentsNumberBeforePostingComment + 1);
         assertTrue(newsPage.getFirstCommentText().equals(commentText));
+
         NewsListCommentComponent comment = newsPage
-                .getComment()
-                .get(0)
-                .clickReplyButton()
-                .createAndPublicReply("reply")
-                .clearReplyTextArea()
-                .createAndPublicReply("REPLY")
+                .getCommentByIndex(0)
+                .createOneReplyToComment("reply")
+                .createAnotherReply("REPLY")
                 .clickViewReplyButton();
         int repliesNumber = comment.numberOfReplies();
+
         assertTrue(repliesNumber == 2);
+
         NewsPage newsPageAfterDeletingComment = comment
                 .clickViewReplyButton()
                 .deleteFirstComment();
         int commentsNumberAfterDeletingComment = newsPageAfterDeletingComment.numbersOfComments();
-        assertTrue(commentsNumberAfterDeletingComment == commentsNumberBeforePostingComment+1);
+
+        assertTrue(commentsNumberAfterDeletingComment == commentsNumberBeforePostingComment + 1);
+    }
+
+    @Test
+    public void verifyReviewRepliesTest() {
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
     }
 }
+

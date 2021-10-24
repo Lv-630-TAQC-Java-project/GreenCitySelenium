@@ -26,7 +26,10 @@ public class EcoNewsPage extends BasePage {
     private EcoNewsListComponent news;
     private Label newsTag;
 
-
+    public EcoNewsListItemComponent getNewsByIndex(int index) {
+       EcoNewsListItemComponent ecoNewsListItemComponent= getNews().get(index);
+        return  ecoNewsListItemComponent;
+    }
     public EcoNewsListComponent getNews() {
         if (news == null) {
             news = new EcoNewsListComponent(driver);

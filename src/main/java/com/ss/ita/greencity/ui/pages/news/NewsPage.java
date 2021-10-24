@@ -35,8 +35,7 @@ public class NewsPage extends BasePage {
         new NewsPage(driver)
                 .setCommentText(commentText)
                 .clickCommentButton();
-//        WebDriverWait wait = new WebDriverWait(driver, 10);
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(format(IS_COMMENT_POSTED.getPath().toString(), commentText))));
+
         return this;
     }
 
@@ -60,8 +59,11 @@ public class NewsPage extends BasePage {
     public String getCommentsCount() {
         return driver.findElement(COMMENTS_COUNT_LABEL.getPath()).getAttribute("textContent");
     }
-
-    public NewsListComponent getComment() {
+public NewsListCommentComponent getCommentByIndex(int index){
+    NewsListCommentComponent newsListCommentComponent =getComments().get(index);
+        return newsListCommentComponent;
+}
+    public NewsListComponent getComments() {
         if (comments == null) {
             comments = new NewsListComponent(driver);
         }
