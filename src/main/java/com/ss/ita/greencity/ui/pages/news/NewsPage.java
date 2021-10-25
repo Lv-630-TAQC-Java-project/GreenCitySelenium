@@ -56,16 +56,16 @@ public class NewsPage extends BasePage {
         return this;
     }
 
-    public void waitForCommentAction(By locator, Integer timeout) {
+    private void waitForCommentAction(Integer timeout) {
         // Current comments count
-        int count_before = driver.findElements(locator).size();
+        int count_before = numbersOfComments();
 
         int loops_count = 0;
         while(true) {
             loops_count += 1;
 
             //Actual comments count
-            int actual_count = driver.findElements(locator).size();
+            int actual_count = numbersOfComments();
 
             // ASAP comment's count was changed - break out from while loop
             if(count_before != actual_count) { break; }
@@ -84,7 +84,7 @@ public class NewsPage extends BasePage {
 
     public NewsPage clickCommentButton() {
         driver.findElement(COMMENT_BUTTON.getPath()).click();
-        new NewsPage(driver).waitForCommentAction(ALL_COMMENTS_LIST.getPath(), 10);
+        new NewsPage(driver).waitForCommentAction(10);
         return this;
     }
 
@@ -103,7 +103,7 @@ public class NewsPage extends BasePage {
         new NewsPage(driver)
                 .clickDeleteCommentButton()
                 .clickApproveDeletingCommentButton();
-        new NewsPage(driver).waitForCommentAction(ALL_COMMENTS_LIST.getPath(), 10);
+        new NewsPage(driver).waitForCommentAction( 10);
         return this;
     }
 
