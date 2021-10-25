@@ -16,6 +16,7 @@ public class NewsListCommentComponent extends BasePage {
     private WebElement root;
     private Label content;
     private TextArea replyInput;
+    private Button postReply;
 
     public NewsListCommentComponent(WebDriver driver, WebElement root) {
         super(driver);
@@ -82,6 +83,13 @@ public class NewsListCommentComponent extends BasePage {
     public NewsListCommentComponent clickApproveDeletingCommentButton() {
         driver.findElement(APPROVE_DELETING_COMMENT_BUTTON.getPath()).click();
         return this;
+    }
+
+    public Button getPublishReplyButton() {
+        if (postReply == null){
+            postReply = new Button(driver, PUBLISH_REPLY_BUTTON);
+        }
+        return postReply;
     }
 
 
