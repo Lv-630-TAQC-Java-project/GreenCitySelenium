@@ -1,5 +1,6 @@
 package com.ss.ita.econews.ui.econews;
 
+import com.ss.ita.econews.ui.CredentialProperties;
 import com.ss.ita.econews.ui.runner.TestRuner;
 import com.ss.ita.greencity.ui.pages.CreateNewsPage;
 import com.ss.ita.greencity.ui.pages.HomePage;
@@ -8,7 +9,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import static com.ss.ita.econews.ui.data.UserSignInData.TARAS_KRASITSKYI;
 
 public class ContentTextAreaTest extends TestRuner {
 
@@ -29,7 +29,7 @@ public class ContentTextAreaTest extends TestRuner {
     @BeforeClass
     public void beforeContentTextAreaTest() {
         createNewsPage = new HomePage(driver).getHeader()
-                .login(TARAS_KRASITSKYI.getEmail(), TARAS_KRASITSKYI.getPassword()).clickHomePageLink()
+                .login(new CredentialProperties().getTarasKrasitskyiLogin(), new CredentialProperties().getTarasKrasitskyiPassword()).clickHomePageLink()
                 .clickEcoNewsLink().clickCreateNewsButton();
     }
 
