@@ -4,8 +4,11 @@ import com.ss.ita.greencity.ui.elements.TextArea;
 import com.ss.ita.greencity.ui.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 import static com.ss.ita.greencity.ui.locators.NewsListCommentsLocators.*;
 import static com.ss.ita.greencity.ui.locators.NewsLocators.*;
@@ -83,5 +86,9 @@ public class NewsPage extends BasePage {
     public NewsPage clickApproveDeletingCommentButton() {
         driver.findElement(APPROVE_DELETING_COMMENT_BUTTON.getPath()).click();
         return this;
+    }
+
+    public List<WebElement> getComments(){
+        return driver.findElements(COMMENTS_LIST.getPath());
     }
 }
