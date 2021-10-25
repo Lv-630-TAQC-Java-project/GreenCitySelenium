@@ -97,11 +97,11 @@ public class NewsListCommentComponent extends BasePage {
 
     public NewsListCommentComponent clickEditComment() {
         new Button(driver, EDIT_COMMENT_BUTTON).clickButton();
-        editCommentField = new TextArea(driver, EDIT_COMMENT_FIELD);
         return this;
     }
 
     public NewsListCommentComponent setEditFieldText(String text) {
+        editCommentField = new TextArea(driver, EDIT_COMMENT_FIELD);
         editCommentField.sendKeysTextArea(text);
         return this;
     }
