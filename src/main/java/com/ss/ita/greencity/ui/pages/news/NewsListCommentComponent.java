@@ -5,6 +5,8 @@ import com.ss.ita.greencity.ui.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static com.ss.ita.greencity.ui.locators.NewsListCommentsLocators.*;
 import static java.lang.String.format;
@@ -14,6 +16,7 @@ public class NewsListCommentComponent extends BasePage {
     private WebElement root;
     private Label content;
     private TextArea replyInput;
+    private Button postReply;
     private TextArea editCommentField;
 
     public NewsListCommentComponent(WebDriver driver, WebElement root) {
@@ -81,6 +84,13 @@ public class NewsListCommentComponent extends BasePage {
     public NewsListCommentComponent clickApproveDeletingCommentButton() {
         driver.findElement(APPROVE_DELETING_COMMENT_BUTTON.getPath()).click();
         return this;
+    }
+
+    public Button getPublishReplyButton() {
+        if (postReply == null){
+            postReply = new Button(driver, PUBLISH_REPLY_BUTTON);
+        }
+        return postReply;
     }
 
     // Edit methods
