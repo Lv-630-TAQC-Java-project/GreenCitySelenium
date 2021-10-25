@@ -24,31 +24,24 @@ public class EditCommentTest extends TestRuner {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         String primaryComment = System.currentTimeMillis() + "";
-        String secondaryComment = primaryComment + "I";
+        String secondaryComment = primaryComment + "s";
 
-        NewsPage page = new HomePage(driver)
+        String actual = new HomePage(driver)
                 .getHeader()
                 .login(UserSignInData.TEST_USER.getEmail(), UserSignInData.TEST_USER.getPassword())
                 .getHeader().clickEcoNewsLink()
                 .getNews()
                 .get(0).click()
                 .setCommentText(primaryComment)
-                .clickCommentButton();
-
-        // waiting for comment to appear
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(
-                String.format("//p[contains(text(),'%s')]", primaryComment)
-                )));
-
-        page
+                .clickCommentButton()
                 .getComment()
                 .get(0)
-                .editComment(secondaryComment);
-
-        String actual = driver
-                .findElement(By.xpath(String.format("//p[contains(text(),'%s')]", secondaryComment)))
+                .editComment(secondaryComment)
+                .getContent()
                 .getText();
+
+        //TODO
+        // Find a way to select "p" tag from WebElement object
 
         Assert.assertEquals(actual, secondaryComment);
     }

@@ -12,7 +12,8 @@ public enum NewsListCommentsLocators implements BaseLocator {
     IS_COMMENT_POSTED(By.xpath("//p[@class='comment-text ng-star-inserted']")),
     EDIT_COMMENT_BUTTON(By.xpath("//button[contains(@class,'edit')]")),
     EDIT_COMMENT_FIELD(By.xpath("//textarea[contains(@class,'edit-text-input')]")),
-    EDIT_SAVE_COMMENT_BUTTON(By.xpath("//button[contains(@class,'save-edit')]"));
+    EDIT_SAVE_COMMENT_BUTTON(By.xpath("//button[contains(@class,'save-edit')]")),
+    COMMENT_TEXT(By.xpath("//p[contains(@class,'comment-text')]"));
 
 
     private final By path;

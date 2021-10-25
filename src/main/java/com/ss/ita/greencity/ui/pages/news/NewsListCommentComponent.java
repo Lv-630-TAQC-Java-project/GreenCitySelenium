@@ -87,7 +87,7 @@ public class NewsListCommentComponent extends BasePage {
     }
 
     public Button getPublishReplyButton() {
-        if (postReply == null){
+        if (postReply == null) {
             postReply = new Button(driver, PUBLISH_REPLY_BUTTON);
         }
         return postReply;
@@ -102,8 +102,6 @@ public class NewsListCommentComponent extends BasePage {
     }
 
     public NewsListCommentComponent setEditFieldText(String text) {
-        if (editCommentField == null) clickEditComment();
-
         editCommentField.sendKeysTextArea(text);
         return this;
     }
@@ -118,5 +116,9 @@ public class NewsListCommentComponent extends BasePage {
         return clickEditComment()
                 .setEditFieldText(newText)
                 .clickSaveChangesButton();
+    }
+
+    public Label getContent(){
+        return new Label(root.findElement(COMMENT_TEXT.getPath()));
     }
 }

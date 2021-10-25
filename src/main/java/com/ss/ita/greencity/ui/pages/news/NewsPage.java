@@ -5,6 +5,7 @@ import com.ss.ita.greencity.ui.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -56,7 +57,18 @@ public class NewsPage extends BasePage {
     }
 
     public NewsPage clickCommentButton() {
+        int commentsCountBefore = driver.findElements(COMMENTS_LIST.getPath()).size();
+        System.out.println(commentsCountBefore);
+
         driver.findElement(COMMENT_BUTTON.getPath()).click();
+
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until((ExpectedCondition<Boolean>) driver -> {
+            int commentsCountAfter = driver.findElements(COMMENTS_LIST.getPath()).size();
+            System.out.println(commentsCountAfter);
+            return commentsCountAfter != commentsCountBefore;
+        });
+
         return this;
     }
 
