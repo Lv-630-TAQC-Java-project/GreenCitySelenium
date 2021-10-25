@@ -2,10 +2,14 @@ package com.ss.ita.greencity.ui.pages.news;
 
 import com.ss.ita.greencity.ui.elements.TextArea;
 import com.ss.ita.greencity.ui.pages.BasePage;
+import okio.Timeout;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.Timer;
 
 import static com.ss.ita.greencity.ui.locators.NewsListCommentsLocators.*;
 import static com.ss.ita.greencity.ui.locators.NewsLocators.*;
@@ -52,8 +56,35 @@ public class NewsPage extends BasePage {
         return this;
     }
 
+    public void waitForCommentAction(By locator, Integer timeout) {
+        // Current comments count
+        int count_before = driver.findElements(locator).size();
+
+        int loops_count = 0;
+        while(true) {
+            loops_count += 1;
+
+            //Actual comments count
+            int actual_count = driver.findElements(locator).size();
+
+            // ASAP comment's count was changed - break out from while loop
+            if(count_before != actual_count) { break; }
+
+            // Throw exception if comment's number wasn't changed during timeout period
+            if (loops_count == timeout) {
+                throw new TimeoutException("Comment count wasn't changed after " + loops_count + " seconds!");
+            }
+
+            // Wait 1 second per iteration
+            try  { Thread.sleep(1000); }
+            catch(InterruptedException ex)
+            { Thread.currentThread().interrupt(); }
+        }
+    }
+
     public NewsPage clickCommentButton() {
         driver.findElement(COMMENT_BUTTON.getPath()).click();
+        new NewsPage(driver).waitForCommentAction(ALL_COMMENTS_LIST.getPath(), 10);
         return this;
     }
 
@@ -72,6 +103,7 @@ public class NewsPage extends BasePage {
         new NewsPage(driver)
                 .clickDeleteCommentButton()
                 .clickApproveDeletingCommentButton();
+        new NewsPage(driver).waitForCommentAction(ALL_COMMENTS_LIST.getPath(), 10);
         return this;
     }
 
