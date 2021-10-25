@@ -3,10 +3,6 @@ package com.ss.ita.econews.ui.econews;
 import com.ss.ita.econews.ui.data.UserSignInData;
 import com.ss.ita.econews.ui.runner.TestRuner;
 import com.ss.ita.greencity.ui.pages.HomePage;
-import com.ss.ita.greencity.ui.pages.news.NewsPage;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -39,9 +35,6 @@ public class EditCommentTest extends TestRuner {
                 .editComment(secondaryComment)
                 .getContent()
                 .getText();
-
-        //TODO
-        // Find a way to select "p" tag from WebElement object
 
         Assert.assertEquals(actual, secondaryComment);
     }
