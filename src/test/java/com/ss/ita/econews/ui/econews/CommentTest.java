@@ -81,7 +81,7 @@ public class CommentTest extends TestRuner {
                 .deleteFirstComment();
         int commentsNumberAfterDeletingComment = newsPageAfterDeletingComment.numbersOfComments();
 
-        assertTrue(commentsNumberAfterDeletingComment == commentsNumberBeforePostingComment + 1);
+        assertTrue(commentsNumberAfterDeletingComment == commentsNumberBeforePostingComment);
     }
 
     @Test

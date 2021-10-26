@@ -22,9 +22,9 @@ public class DeleteCommentTest extends TestRuner {
         ecoNewsPage.getNews().get(0).click();
         int comments_before_test = driver.findElements(ALL_COMMENTS_LIST.getPath()).size();
         new NewsPage(driver)
-                .setCommentText("Test comment for DeleteCommentTest")
-                .clickCommentButton();
-        new NewsPage(driver).deleteFirstComment();
+                .createAndPublicComment("Test comment for DeleteCommentTest")
+                .getCommentByIndex(0)
+                .deleteFirstComment();
         int comments_after_test = driver.findElements(ALL_COMMENTS_LIST.getPath()).size();
         Assert.assertEquals(comments_before_test, comments_after_test);
     }
