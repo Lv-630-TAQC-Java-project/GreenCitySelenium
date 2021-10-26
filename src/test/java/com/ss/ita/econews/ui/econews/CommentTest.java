@@ -36,7 +36,7 @@ public class CommentTest extends TestRuner {
         int commentsNumberAfterPostingComment = newsPage.numbersOfComments();
 
         assertTrue(commentsNumberAfterPostingComment == commentsNumberBeforePostingComment + 1);
-        assertTrue(newsPage.getCommentText(0).equals(commentText));
+        assertTrue(newsPage.getCommentByIndex(0).getContent().getText().equals(commentText));
     }
 
     @Test
@@ -50,7 +50,7 @@ public class CommentTest extends TestRuner {
         int commentsNumberAfterPostingComment = newsPage.numbersOfComments();
 
         assertTrue(commentsNumberAfterPostingComment == commentsNumberBeforePostingComment + 1);
-        assertTrue(newsPage.getCommentText(0).equals(commentText));
+        assertTrue(newsPage.getCommentByIndex(0).getContent().getText().equals(commentText));
 
         NewsListCommentComponent comment = newsPage
                 .getCommentByIndex(0)

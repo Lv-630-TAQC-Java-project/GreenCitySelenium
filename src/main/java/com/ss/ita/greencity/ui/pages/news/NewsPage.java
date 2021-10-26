@@ -85,14 +85,7 @@ public class NewsPage extends BasePage {
     public String getCommentsCount() {
         return driver.findElement(COMMENTS_COUNT_LABEL.getPath()).getAttribute("textContent");
     }
-    public WebElement getWebElementComment(int number) {
-        return driver.findElements(COMMENTS_LIST.getPath()).get(number);
-    }
-
-    public String getCommentText(int numberOfComment) {
-        return getWebElementComment(numberOfComment).getText();
-//        return root.getText();
-    }
+    
     public NewsListCommentComponent getCommentByIndex(int index) {
             comments = new NewsListComponent(driver);
 
