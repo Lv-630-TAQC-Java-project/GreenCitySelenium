@@ -58,7 +58,6 @@ public class NewsPage extends BasePage {
 
     public NewsPage clickCommentButton() {
         int commentsCountBefore = driver.findElements(COMMENTS_LIST.getPath()).size();
-        System.out.println(commentsCountBefore);
 
         driver.findElement(COMMENT_BUTTON.getPath()).click();
 
