@@ -14,28 +14,25 @@ import java.util.concurrent.TimeUnit;
 
 
 import static com.ss.ita.econews.ui.data.UserSignInData.*;
-import static com.ss.ita.greencity.ui.locators.NewsLocators.COMMENTS_LIST;
 import static org.testng.Assert.*;
 
 public class CommentTest extends TestRuner {
 
-    private NewsPage loginAndCreateNews() {
-        CreateNewsPage createNewsPage = new HomePage(driver)
+    private NewsPage loginAndGoToFirstNews() {
+       NewsPage newsPage = new HomePage(driver)
                 .getHeader()
                 .login(VLAD_DMYTRIV.getEmail(), VLAD_DMYTRIV.getPassword())
-                .clickHomePageLink()
-                .clickEcoNewsLink()
-                .clickCreateNewsButton()
-                .clickTagNewsButton();
-        createNewsPage.setTitleTextArea(System.currentTimeMillis() + "");
-        createNewsPage.setContentArea();
-        createNewsPage.clickPublishButton();
-
-        EcoNewsPage ecoNewsPage = createNewsPage
                 .getHeader()
-                .clickEcoNewsLink();
-
-        NewsPage newsPage = ecoNewsPage
+                .clickEcoNewsLink()
+//                .clickCreateNewsButton()
+//                .clickTagNewsButton();
+//        createNewsPage.setTitleTextArea(System.currentTimeMillis() + "");
+//        createNewsPage.setContentArea();
+//        createNewsPage.clickPublishButton();
+//
+//        EcoNewsPage ecoNewsPage = createNewsPage
+//                .getHeader()
+//                .clickEcoNewsLink();
                 .getNewsByIndex(0)
                 .click();
         return newsPage;
@@ -45,7 +42,7 @@ public class CommentTest extends TestRuner {
     public void verifyCommentPublishingTest() {
         String commentText = "Comment";
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        NewsPage newsPage = loginAndCreateNews();
+        NewsPage newsPage = loginAndGoToFirstNews();
         int commentsNumberBeforePostingComment = newsPage.numbersOfComments();
         newsPage.createAndPublicComment(commentText);
         int commentsNumberAfterPostingComment = newsPage.numbersOfComments();
@@ -59,7 +56,7 @@ public class CommentTest extends TestRuner {
         String commentText = UUID.randomUUID().toString();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        NewsPage newsPage = loginAndCreateNews();
+        NewsPage newsPage = loginAndGoToFirstNews();
         int commentsNumberBeforePostingComment = newsPage.numbersOfComments();
         newsPage.createAndPublicComment(commentText);
         int commentsNumberAfterPostingComment = newsPage.numbersOfComments();
