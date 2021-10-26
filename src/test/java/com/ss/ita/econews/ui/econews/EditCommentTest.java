@@ -30,8 +30,7 @@ public class EditCommentTest extends TestRuner {
                 .get(0).click()
                 .setCommentText(primaryComment)
                 .clickCommentButton()
-                .getComment()
-                .get(0)
+                .getCommentByIndex(0)
                 .editComment(secondaryComment)
                 .getContent()
                 .getText();

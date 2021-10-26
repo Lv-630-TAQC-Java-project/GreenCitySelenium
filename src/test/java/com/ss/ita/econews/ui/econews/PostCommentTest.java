@@ -35,7 +35,7 @@ public class PostCommentTest extends TestRuner {
         WebDriverWait wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(COMMENTS_LIST.getPath()));
 
-        int commentsListSize = newsPage.getComments().size();
+        int commentsListSize = newsPage.getCommentsList().size();
         int commentsCountInLabel = Integer.parseInt(newsPage.getCommentsCount().replaceAll("\\D", ""));
         Assert.assertEquals(commentsCountInLabel, commentsListSize);
     }

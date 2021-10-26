@@ -5,6 +5,8 @@ import com.ss.ita.greencity.ui.pages.*;
 import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
 import com.ss.ita.greencity.ui.pages.news.NewsListCommentComponent;
 import com.ss.ita.greencity.ui.pages.news.NewsPage;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.util.UUID;
@@ -12,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 
 import static com.ss.ita.econews.ui.data.UserSignInData.*;
+import static com.ss.ita.greencity.ui.locators.NewsLocators.COMMENTS_LIST;
 import static org.testng.Assert.*;
 
 public class CommentTest extends TestRuner {

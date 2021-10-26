@@ -17,8 +17,7 @@ public class EmptyReplyTest extends TestRuner {
                 .getNews().get(0)
                 .click()
                 .createAndPublicComment("Test comment")
-                .getComment()
-                .get(0)
+                .getCommentByIndex(0)
                 .clickReplyButton()
                 .getPublishReplyButton();
         Assert.assertFalse(postReplyButton.isEnabled());

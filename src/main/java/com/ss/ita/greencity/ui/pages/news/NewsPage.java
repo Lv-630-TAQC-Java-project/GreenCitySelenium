@@ -131,7 +131,7 @@ public NewsListCommentComponent getCommentByIndex(int index){
         return this;
     }
 
-    public List<WebElement> getComments(){
+    public List<WebElement> getCommentsList(){
         return driver.findElements(COMMENTS_LIST.getPath());
     }
 }
