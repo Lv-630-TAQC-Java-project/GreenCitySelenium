@@ -23,8 +23,7 @@ public class NewsListCommentComponent extends BasePage {
     }
 
     public NewsListCommentComponent createOneReplyToComment(String replyText) {
-        return new NewsListCommentComponent(driver,root)
-                .clickReplyButton()
+        return clickReplyButton()
                 .createAnotherReply(replyText)
                 .clearReplyTextArea();
     }
@@ -158,7 +157,7 @@ public class NewsListCommentComponent extends BasePage {
                 .clickSaveChangesButton();
     }
 
-    public Label getContent(){
+    public Label getContent() {
         return new Label(root.findElement(COMMENT_TEXT.getPath()));
     }
 }

@@ -9,8 +9,6 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
-
 import static com.ss.ita.greencity.ui.locators.NewsLocators.*;
 
 public class NewsPage extends BasePage {
@@ -19,6 +17,7 @@ public class NewsPage extends BasePage {
         super(driver);
     }
 
+    private WebElement root;
     private TextArea commentInput;
     private NewsListComponent comments;
 
@@ -28,8 +27,8 @@ public class NewsPage extends BasePage {
         return count;
     }
 
-    public String getFirstCommentText() {
-        return driver.findElement(FIRST_COMMENT_TEXT.getPath()).getText();
+    public String getCommentText(int numberOfComment) {
+        return getWebElementComment(numberOfComment).getText();
     }
 
     public void waitForCommentAction(Integer timeout) {
@@ -92,18 +91,12 @@ public class NewsPage extends BasePage {
     }
 
     public NewsListCommentComponent getCommentByIndex(int index) {
-        NewsListCommentComponent newsListCommentComponent = getComments().get(index);
-        return newsListCommentComponent;
-    }
-
-    public NewsListComponent getComments() {
-        if (comments == null) {
             comments = new NewsListComponent(driver);
-        }
-        return comments;
+
+        return comments.get(index);
     }
 
-    public List<WebElement> getCommentsList() {
-        return driver.findElements(COMMENTS_LIST.getPath());
+    public WebElement getWebElementComment(int number) {
+        return driver.findElements(COMMENTS_LIST.getPath()).get(number);
     }
 }

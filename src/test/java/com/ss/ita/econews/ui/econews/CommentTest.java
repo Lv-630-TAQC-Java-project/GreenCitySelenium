@@ -2,11 +2,8 @@ package com.ss.ita.econews.ui.econews;
 
 import com.ss.ita.econews.ui.runner.TestRuner;
 import com.ss.ita.greencity.ui.pages.*;
-import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
 import com.ss.ita.greencity.ui.pages.news.NewsListCommentComponent;
 import com.ss.ita.greencity.ui.pages.news.NewsPage;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import java.util.UUID;
@@ -40,7 +37,7 @@ public class CommentTest extends TestRuner {
 
     @Test
     public void verifyCommentPublishingTest() {
-        String commentText = "Comment";
+        String commentText = UUID.randomUUID().toString();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         NewsPage newsPage = loginAndGoToFirstNews();
         int commentsNumberBeforePostingComment = newsPage.numbersOfComments();
@@ -48,7 +45,7 @@ public class CommentTest extends TestRuner {
         int commentsNumberAfterPostingComment = newsPage.numbersOfComments();
 
         assertTrue(commentsNumberAfterPostingComment == commentsNumberBeforePostingComment + 1);
-        assertTrue(newsPage.getFirstCommentText().equals(commentText));
+        assertTrue(newsPage.getCommentText(0).equals(commentText));
     }
 
     @Test
@@ -62,7 +59,7 @@ public class CommentTest extends TestRuner {
         int commentsNumberAfterPostingComment = newsPage.numbersOfComments();
 
         assertTrue(commentsNumberAfterPostingComment == commentsNumberBeforePostingComment + 1);
-        assertTrue(newsPage.getFirstCommentText().equals(commentText));
+        assertTrue(newsPage.getCommentText(0).equals(commentText));
 
         NewsListCommentComponent comment = newsPage
                 .getCommentByIndex(0)
