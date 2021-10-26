@@ -32,4 +32,8 @@ public class BaseWebElement {
     public BaseWebElement(WebElement element) {
         this.webElement = element;
     }
+
+    public boolean isDisplayed() {
+        return this.webElement.isDisplayed();
+    }
 }
