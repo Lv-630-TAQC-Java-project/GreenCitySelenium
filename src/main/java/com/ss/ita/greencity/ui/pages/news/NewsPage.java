@@ -27,10 +27,6 @@ public class NewsPage extends BasePage {
         return count;
     }
 
-    public String getCommentText(int numberOfComment) {
-        return getWebElementComment(numberOfComment).getText();
-    }
-
     public void waitForCommentAction(Integer timeout) {
         // Current comments count
         int count_before = numbersOfComments();
@@ -96,7 +92,4 @@ public class NewsPage extends BasePage {
         return comments.get(index);
     }
 
-    public WebElement getWebElementComment(int number) {
-        return driver.findElements(COMMENTS_LIST.getPath()).get(number);
-    }
 }

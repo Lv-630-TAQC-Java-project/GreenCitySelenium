@@ -15,22 +15,13 @@ import static org.testng.Assert.*;
 
 public class CommentTest extends TestRuner {
 
-    private NewsPage loginAndGoToFirstNews() {
+    private NewsPage loginAndGoToNews(int indexOfNews) {
        NewsPage newsPage = new HomePage(driver)
                 .getHeader()
                 .login(VLAD_DMYTRIV.getEmail(), VLAD_DMYTRIV.getPassword())
                 .getHeader()
                 .clickEcoNewsLink()
-//                .clickCreateNewsButton()
-//                .clickTagNewsButton();
-//        createNewsPage.setTitleTextArea(System.currentTimeMillis() + "");
-//        createNewsPage.setContentArea();
-//        createNewsPage.clickPublishButton();
-//
-//        EcoNewsPage ecoNewsPage = createNewsPage
-//                .getHeader()
-//                .clickEcoNewsLink();
-                .getNewsByIndex(0)
+                .getNewsByIndex(indexOfNews)
                 .click();
         return newsPage;
     }
@@ -39,13 +30,13 @@ public class CommentTest extends TestRuner {
     public void verifyCommentPublishingTest() {
         String commentText = UUID.randomUUID().toString();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        NewsPage newsPage = loginAndGoToFirstNews();
+        NewsPage newsPage = loginAndGoToNews(0);
         int commentsNumberBeforePostingComment = newsPage.numbersOfComments();
         newsPage.createAndPublicComment(commentText);
         int commentsNumberAfterPostingComment = newsPage.numbersOfComments();
 
         assertTrue(commentsNumberAfterPostingComment == commentsNumberBeforePostingComment + 1);
-        assertTrue(newsPage.getCommentText(0).equals(commentText));
+        assertTrue(newsPage.getCommentByIndex(0).getContent().equals(commentText));
     }
 
     @Test
@@ -53,13 +44,13 @@ public class CommentTest extends TestRuner {
         String commentText = UUID.randomUUID().toString();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        NewsPage newsPage = loginAndGoToFirstNews();
+        NewsPage newsPage = loginAndGoToNews(0);
         int commentsNumberBeforePostingComment = newsPage.numbersOfComments();
         newsPage.createAndPublicComment(commentText);
         int commentsNumberAfterPostingComment = newsPage.numbersOfComments();
 
         assertTrue(commentsNumberAfterPostingComment == commentsNumberBeforePostingComment + 1);
-        assertTrue(newsPage.getCommentText(0).equals(commentText));
+        assertTrue(newsPage.getCommentByIndex(0).getContent().equals(commentText));
 
         NewsListCommentComponent comment = newsPage
                 .getCommentByIndex(0)
