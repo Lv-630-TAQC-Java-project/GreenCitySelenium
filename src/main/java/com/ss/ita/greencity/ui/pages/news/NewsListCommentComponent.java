@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import static com.ss.ita.greencity.ui.locators.NewsListCommentsLocators.*;
+import static com.ss.ita.greencity.ui.locators.NewsLocators.COMMENTS_LIST;
 
 public class NewsListCommentComponent extends BasePage {
 
@@ -109,6 +110,8 @@ public class NewsListCommentComponent extends BasePage {
             }
         }
     }
+
+
 
     public NewsPage deleteFirstComment() {
         clickDeleteCommentButton().clickApproveDeletingCommentButton().waitForCommentAction(10);
