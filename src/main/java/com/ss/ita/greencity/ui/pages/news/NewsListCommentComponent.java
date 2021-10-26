@@ -14,6 +14,8 @@ public class NewsListCommentComponent extends BasePage {
     private WebElement root;
     private Label content;
     private TextArea replyInput;
+    private Button postReply;
+    private TextArea editCommentField;
 
     public NewsListCommentComponent(WebDriver driver, WebElement root) {
         super(driver);
@@ -89,5 +91,39 @@ public class NewsListCommentComponent extends BasePage {
         return this;
     }
 
+    public Button getPublishReplyButton() {
+        if (postReply == null) {
+            postReply = new Button(driver, PUBLISH_REPLY_BUTTON);
+        }
+        return postReply;
+    }
 
+    // Edit methods
+
+    public NewsListCommentComponent clickEditComment() {
+        new Button(driver, EDIT_COMMENT_BUTTON).clickButton();
+        return this;
+    }
+
+    public NewsListCommentComponent setEditFieldText(String text) {
+        editCommentField = new TextArea(driver, EDIT_COMMENT_FIELD);
+        editCommentField.sendKeysTextArea(text);
+        return this;
+    }
+
+    public NewsListCommentComponent clickSaveChangesButton() {
+        new Button(driver, EDIT_SAVE_COMMENT_BUTTON).clickButton();
+        return this;
+    }
+
+    // general method
+    public NewsListCommentComponent editComment(String newText) {
+        return clickEditComment()
+                .setEditFieldText(newText)
+                .clickSaveChangesButton();
+    }
+
+    public Label getContent(){
+        return new Label(root.findElement(COMMENT_TEXT.getPath()));
+    }
 }

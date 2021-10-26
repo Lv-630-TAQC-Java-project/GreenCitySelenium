@@ -22,7 +22,8 @@ public enum CreateNewsPageLocators implements BaseLocator {
     EVENTS_BUTTON(By.xpath("//button[normalize-space()='Events']")),
     INITIATIVES_BUTTON(By.xpath("//button[normalize-space()='Initiatives']")),
     EDUCATION_BUTTON(By.xpath("//button[normalize-space()='Education']")),
-    PREVIEW_BUTTON(By.xpath("//button[@class='preview']"));
+    PREVIEW_BUTTON(By.xpath("//button[@class='preview']")),
+    PREVIEW_CREATE_BUTTON(By.cssSelector("button[type='submit']"));
 
 
     private final By path;

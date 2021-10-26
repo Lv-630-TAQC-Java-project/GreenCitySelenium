@@ -14,4 +14,8 @@ public class Button extends BaseWebElement {
         this.webElement.click();
     }
 
+    public boolean isEnabled() {
+        return  this.webElement.isEnabled();
+    }
+
 }

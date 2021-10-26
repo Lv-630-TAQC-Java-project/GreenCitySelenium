@@ -2,10 +2,19 @@ package com.ss.ita.greencity.ui.pages.news;
 
 import com.ss.ita.greencity.ui.elements.TextArea;
 import com.ss.ita.greencity.ui.pages.BasePage;
+import okio.Timeout;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+
+import java.util.Timer;
+import java.util.List;
+
 
 import static com.ss.ita.greencity.ui.locators.NewsListCommentsLocators.*;
 import static com.ss.ita.greencity.ui.locators.NewsLocators.*;
@@ -51,8 +60,42 @@ public class NewsPage extends BasePage {
         return this;
     }
 
+    private void waitForCommentAction(Integer timeout) {
+        // Current comments count
+        int count_before = numbersOfComments();
+
+        int loops_count = 0;
+        while(true) {
+            loops_count += 1;
+
+            //Actual comments count
+            int actual_count = numbersOfComments();
+
+            // ASAP comment's count was changed - break out from while loop
+            if(count_before != actual_count) { break; }
+
+            // Throw exception if comment's number wasn't changed during timeout period
+            if (loops_count == timeout) {
+                throw new TimeoutException("Comment count wasn't changed after " + loops_count + " seconds!");
+            }
+
+            // Wait 1 second per iteration
+            try  { Thread.sleep(1000); }
+            catch(InterruptedException ex)
+            { Thread.currentThread().interrupt(); }
+        }
+    }
+
     public NewsPage clickCommentButton() {
+        int commentsCountBefore = driver.findElements(COMMENTS_LIST.getPath()).size();
+
         driver.findElement(COMMENT_BUTTON.getPath()).click();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until((ExpectedCondition<Boolean>) driver -> {
+            int commentsCountAfter = driver.findElements(COMMENTS_LIST.getPath()).size();
+            System.out.println(commentsCountAfter);
+            return commentsCountAfter != commentsCountBefore;
+        });
         return this;
     }
 
@@ -74,6 +117,7 @@ public NewsListCommentComponent getCommentByIndex(int index){
         new NewsPage(driver)
                 .clickDeleteCommentButton()
                 .clickApproveDeletingCommentButton();
+        new NewsPage(driver).waitForCommentAction( 10);
         return this;
     }
 
@@ -85,5 +129,9 @@ public NewsListCommentComponent getCommentByIndex(int index){
     public NewsPage clickApproveDeletingCommentButton() {
         driver.findElement(APPROVE_DELETING_COMMENT_BUTTON.getPath()).click();
         return this;
+    }
+
+    public List<WebElement> getComments(){
+        return driver.findElements(COMMENTS_LIST.getPath());
     }
 }
