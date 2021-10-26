@@ -10,7 +10,7 @@ public enum CreateNewsPageLocators implements BaseLocator {
     SELECTED_NEWS_TAG_BUTTON(By.xpath("//button[contains (@class, 'tag-news filters-color') and (text()=' News ')]")),
     ADS_TAG_BUTTON(By.xpath("//button[normalize-space()='Ads']")),
     EVENTS_TAG_BUTTON(By.xpath("//button[normalize-space()='Events']")),
-    INITIATIVES_TAG_BUTTON(By.xpath("//button[normalize-space()='Initiatives']" )),
+    INITIATIVES_TAG_BUTTON(By.xpath("//button[normalize-space()='Initiatives']")),
     EDUCATION_TAG_BUTTON(By.xpath("//button[normalize-space()='Education']")),
     SOURCE_AREA(By.xpath("//input[@placeholder='link to external source']")),
     CONTENT_AREA(By.name("main-area")),
