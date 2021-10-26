@@ -13,7 +13,7 @@ public enum NewsListCommentsLocators implements BaseLocator {
     EDIT_COMMENT_BUTTON(By.xpath("//button[contains(@class,'edit')]")),
     EDIT_COMMENT_FIELD(By.xpath("//textarea[contains(@class,'edit-text-input')]")),
     EDIT_SAVE_COMMENT_BUTTON(By.xpath("//button[contains(@class,'save-edit')]")),
-    COMMENT_TEXT(By.xpath("//p[contains(@class,'comment-text')]"));
+    COMMENT_TEXT(By.xpath("//p[contains(@class,'comment-text')]")),
     ALL_COMMENTS_LIST(By.cssSelector("app-comments-list[datatype='comment'] > div"));
 
 
