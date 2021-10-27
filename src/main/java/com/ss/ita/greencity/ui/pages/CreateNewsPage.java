@@ -18,6 +18,7 @@ public class CreateNewsPage extends BasePage {
     private Button initiatives_button;
     private Button education_button;
     private Button publish_button;
+    private Button selectedNewsButton;
 
     public CreateNewsPage(WebDriver driver) {
         super(driver);
@@ -179,6 +180,18 @@ public class CreateNewsPage extends BasePage {
     public PreviewPage clickPreviewButton() {
         driver.findElement(PREVIEW_BUTTON.getPath()).click();
         return new PreviewPage(driver);
+    }
+
+    public Button getSelectedNewsTagButton() {
+        if (selectedNewsButton == null) {
+            selectedNewsButton = new Button(driver, SELECTED_NEWS_TAG_BUTTON);
+        }
+        return selectedNewsButton;
+    }
+
+    public CreateNewsPage clickSelectedNewsTagButton(){
+        getSelectedNewsTagButton().clickButton();
+        return this;
     }
 
 

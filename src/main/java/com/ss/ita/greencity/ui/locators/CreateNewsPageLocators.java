@@ -7,6 +7,7 @@ public enum CreateNewsPageLocators implements BaseLocator {
     TEXT_AREA_DESCRIPTION(By.cssSelector("p.textarea-description")),
     TITLE_TEXT_AREA(By.xpath("//textarea[@placeholder='e.g. Coffee takeaway with 20% discount']")),
     NEWS_TAG_BUTTON(By.xpath("//button[normalize-space()='News']")),
+    SELECTED_NEWS_TAG_BUTTON(By.xpath("//button[contains (@class, 'tag-news filters-color') and (text()=' News ')]")),
     ADS_TAG_BUTTON(By.xpath("//button[normalize-space()='Ads']")),
     EVENTS_TAG_BUTTON(By.xpath("//button[normalize-space()='Events']")),
     INITIATIVES_TAG_BUTTON(By.xpath("//button[normalize-space()='Initiatives']")),
