@@ -2,6 +2,7 @@ package com.ss.ita.greencity.ui.elements;
 
 import com.ss.ita.greencity.ui.locators.BaseLocator;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -31,5 +32,13 @@ public class BaseWebElement {
 
     public BaseWebElement(WebElement element) {
         this.webElement = element;
+    }
+
+    public boolean isDisplayed() {
+        return this.webElement.isDisplayed();
+    }
+
+    public Point getLocation() {
+        return this.webElement.getLocation();
     }
 }
