@@ -20,7 +20,7 @@ public class NewsListCommentComponent extends BasePage {
     private TextArea replyInput;
     private Button postReply;
     private TextArea editCommentField;
-    private Label viewReplies;
+    private Button viewReplies;
     private TextArea commentInput;
     private NewsListComponent comments;
     private Button acceptReply;
@@ -203,9 +203,9 @@ public class NewsListCommentComponent extends BasePage {
         }
         return saveChangesButton;
     }
-    public Label getViewReplies() {
+    public Button getViewReplies() {
         if (viewReplies == null) {
-            viewReplies = new Label(driver, VIEW_REPLIES);
+            viewReplies = new Button(driver, VIEW_REPLIES);
         }
         return viewReplies;
     }
@@ -214,7 +214,7 @@ public class NewsListCommentComponent extends BasePage {
     }
 
     public void clickOnGetViewReplies(){
-        getViewReplies().click();
+        getViewReplies().clickButton();
     }
 
     public Button getEditReplyButton() {
