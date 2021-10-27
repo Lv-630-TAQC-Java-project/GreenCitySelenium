@@ -4,14 +4,11 @@ import com.ss.ita.greencity.ui.elements.Label;
 import com.ss.ita.greencity.ui.locators.EcoNewsListItemLocators;
 import com.ss.ita.greencity.ui.pages.BasePage;
 import com.ss.ita.greencity.ui.pages.news.NewsPage;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.Locale;
 
 public class EcoNewsListItemComponent extends BasePage {
 
@@ -21,6 +18,7 @@ public class EcoNewsListItemComponent extends BasePage {
     private Label image;
     private Label tag;
     private Label data;
+    private Label author;
 
 
     public EcoNewsListItemComponent(WebDriver driver, WebElement root) {
@@ -63,6 +61,13 @@ public class EcoNewsListItemComponent extends BasePage {
         return data;
     }
 
+    public Label getAuthor() {
+        if (author == null) {
+            author = new Label(driver, root, EcoNewsListItemLocators.AUTHOR_LABEL);
+        }
+        return author;
+    }
+
     public NewsPage click(){
         root.click();
         return new NewsPage(driver);
@@ -71,4 +76,16 @@ public class EcoNewsListItemComponent extends BasePage {
     public String getNewsClass() {
         return this.root.getAttribute("class");
     }
+
+    public boolean checkElementPosition(Label leftElement, Label rightElement) {
+
+        Point leftElementPoint = leftElement.getLocation();
+        Point pointAuthorPoint = rightElement.getLocation();
+        int leftElementX = leftElementPoint.getX();
+        int rightElementX = pointAuthorPoint.getX();
+        if (leftElementX < rightElementX) {
+            return true;
+        } else return false;
+    }
+
 }

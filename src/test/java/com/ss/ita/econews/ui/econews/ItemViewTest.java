@@ -33,10 +33,12 @@ public class ItemViewTest extends TestRuner {
         softAssert.assertTrue(ecoNewsItem.getImage().isDisplayed());
         softAssert.assertTrue(ecoNewsItem.getTag().isDisplayed());
         softAssert.assertTrue(ecoNewsItem.getTitle().isDisplayed());
-        softAssert.assertEquals(ecoNewsItem.getTitle().getText(),"1635251747206");
+        softAssert.assertEquals(ecoNewsItem.getTitle().getText(),"1635253186099");
         softAssert.assertTrue(ecoNewsItem.getContent().isDisplayed());
         softAssert.assertEquals(ecoNewsItem.getContent().getText(),"Description for test Create News");
+        softAssert.assertEquals(ecoNewsItem.getAuthor().getText(),"vlad dmytriv");
         softAssert.assertTrue(valid);
+        softAssert.assertTrue(ecoNewsItem.checkElementPosition(ecoNewsItem.getData(), ecoNewsItem.getAuthor()));
         softAssert.assertAll();
 
     }
