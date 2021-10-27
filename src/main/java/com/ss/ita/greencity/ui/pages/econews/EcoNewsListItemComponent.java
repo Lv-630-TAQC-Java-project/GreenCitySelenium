@@ -77,15 +77,4 @@ public class EcoNewsListItemComponent extends BasePage {
         return this.root.getAttribute("class");
     }
 
-    public boolean checkElementPosition(Label leftElement, Label rightElement) {
-
-        Point leftElementPoint = leftElement.getLocation();
-        Point pointAuthorPoint = rightElement.getLocation();
-        int leftElementX = leftElementPoint.getX();
-        int rightElementX = pointAuthorPoint.getX();
-        if (leftElementX < rightElementX) {
-            return true;
-        } else return false;
-    }
-
 }
