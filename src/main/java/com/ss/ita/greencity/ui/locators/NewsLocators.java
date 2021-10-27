@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 public enum NewsLocators implements BaseLocator {
     COMMENT_TEXT_AREA(By.xpath("//textarea")),
     COMMENT_BUTTON(By.xpath("//button[@class='primary-global-button']")),
-    FIRST_COMMENT_TEXT(By.xpath("//p[contains(@class,'comment-text')][1]")),
+    COMMENT_TEXT(By.xpath("//p[contains(@class,'comment-text')]")),
     COMMENTS_COUNT_LABEL(By.xpath(".//app-comments-container//p[2]")), ///text()[normalize-space()][1]
     COMMENTS_LIST(By.xpath(".//app-comments-list/div"));
 
