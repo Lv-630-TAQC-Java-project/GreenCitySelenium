@@ -16,13 +16,10 @@ import static com.ss.ita.greencity.ui.locators.NewsLocators.*;
 public class NewsListCommentComponent extends BasePage {
 
     private WebElement root;
-    private Label content;
     private TextArea replyInput;
     private Button postReply;
     private TextArea editCommentField;
     private Button viewReplies;
-    private TextArea commentInput;
-    private NewsListComponent comments;
     private Button acceptReply;
     private Input editReplyHolder;
     private Button editReplyButton;
