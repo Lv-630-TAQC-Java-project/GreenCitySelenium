@@ -1,5 +1,6 @@
 package com.ss.ita.greencity.ui.pages.news;
 
+import com.ss.ita.greencity.ui.elements.Span;
 import com.ss.ita.greencity.ui.elements.TextArea;
 import com.ss.ita.greencity.ui.pages.BasePage;
 import org.openqa.selenium.By;
@@ -18,8 +19,6 @@ public class NewsPage extends BasePage {
 
     private TextArea commentInput;
     private NewsListComponent comments;
-
-
 
     public int numbersOfComments() {
 

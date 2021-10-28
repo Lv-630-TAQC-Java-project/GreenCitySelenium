@@ -13,7 +13,6 @@ public enum EcoNewsListItemLocators implements BaseLocator {
     IMAGE_LABEL(By.xpath(".//div/img")),
     AUTHOR_LABEL(By.xpath(".//div[3]/p[2]"));
 
-
     private final By path;
 
     public String TITLE_OF_NEWS_TEMPLATE = "//h3[contains(text(),'%s')]";
