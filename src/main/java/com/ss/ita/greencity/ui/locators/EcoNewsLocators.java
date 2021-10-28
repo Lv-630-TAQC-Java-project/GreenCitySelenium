@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 public enum EcoNewsLocators implements BaseLocator {
     ECO_NEWS_MAIN_HEADER(By.cssSelector("#main-content > div > div:nth-child(1) > div > h1")),
     TEST_NEWS_TITLE(By.xpath("(//h3[contains(text(),'Test News')][1]")),
-    FFFFFFFFFF_NEWS_TITLE(By.xpath("//h3[contains(text(),' ffffffffffffffffff ')]")),
     CREATE_NEWS_BUTTON(By.id("create-button")),
     FILTER_BY_NEWS(By.xpath(("//a[normalize-space()='News']"))),
     FILTER_BY_NEWS_TAG(By.xpath("//*[contains(@class, 'ul-eco-buttons') and (text()=' News ')]")),

@@ -9,6 +9,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 
+import java.util.concurrent.TimeUnit;
+
 
 public class TestRuner {
     protected static WebDriver driver;
@@ -33,6 +35,7 @@ public class TestRuner {
             }
         }
         driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(propertiesProvider.getBaseUrl());
     }
 

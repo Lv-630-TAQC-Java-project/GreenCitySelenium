@@ -6,14 +6,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static com.ss.ita.greencity.ui.locators.NewsListCommentsLocators.*;
-import static com.ss.ita.greencity.ui.locators.NewsLocators.COMMENTS_LIST;
+
 
 public class NewsListCommentComponent extends BasePage {
 
     private WebElement root;
-    private Label content;
+    private Button nextReplies;
     private TextArea replyInput;
     private Button postReply;
     private TextArea editCommentField;
@@ -63,6 +66,21 @@ public class NewsListCommentComponent extends BasePage {
         return this;
     }
 
+    public NewsListCommentComponent clickNextRepliesButton() {
+        getNextRepliesButton().clickButton();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.
+                numberOfElementsToBeLessThan(By.xpath("//div[contains(@class,'comment-body-wrapper wrapper-reply')]"), 10));
+        return this;
+    }
+
+    public Button getNextRepliesButton() {
+        if (nextReplies == null) {
+            nextReplies = new Button(driver, NEXT_REPLIES_BUTTON);
+        }
+        return nextReplies;
+    }
+
     public TextArea getReplyInput() {
         if (replyInput == null) {
             replyInput = new TextArea(driver, REPLY_TEXT_AREA);
@@ -110,7 +128,6 @@ public class NewsListCommentComponent extends BasePage {
             }
         }
     }
-
 
 
     public NewsPage deleteFirstComment() {
