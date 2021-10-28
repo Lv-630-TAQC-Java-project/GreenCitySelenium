@@ -7,7 +7,9 @@ public enum NewsLocators implements BaseLocator {
     COMMENT_BUTTON(By.xpath("//button[@class='primary-global-button']")),
     COMMENT_TEXT(By.xpath("//p[contains(@class,'comment-text')]")),
     COMMENTS_COUNT_LABEL(By.xpath(".//app-comments-container//p[2]")), ///text()[normalize-space()][1]
-    COMMENTS_LIST(By.xpath(".//app-comments-list/div"));
+    COMMENTS_LIST(By.xpath(".//app-comments-list/div")),
+	LIKE_COUNT(By.cssSelector("span.like-amount")),
+	LIKE_BUTTON(By.cssSelector("button.cta-btn.like"));
 
     private final By path;
 

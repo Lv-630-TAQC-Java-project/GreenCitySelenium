@@ -13,7 +13,9 @@ public enum HeaderLocators implements BaseLocator {
     SIGN_IN(By.xpath("//a[normalize-space()='Sign in']")),
     EMAIL(By.id("email")),
     PASSWORD(By.id("password")),
-    SIGN_IN_IN_WINDOW(By.xpath("//button[@type='submit']"));
+    SIGN_IN_IN_WINDOW(By.xpath("//button[@type='submit']")),
+	PROFILE_OPTIONS(By.id("header_user-wrp")),
+	SIGN_OUT(By.cssSelector("li[aria-label='sign-out']"));		
 
     private final By path;
 

@@ -27,4 +27,10 @@ public class EcoNewsListComponent extends BasePage {
     public EcoNewsListItemComponent get(int i) {
         return news.get(i);
     }
+    
+    public int sizeEcoNewsListComponent() {
+    	return news.size();
+    }
+    
+    
 }
