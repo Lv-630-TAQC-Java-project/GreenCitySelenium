@@ -13,19 +13,17 @@ public class NewsListComponent extends BasePage {
 
     public NewsListComponent(WebDriver driver) {
         super(driver);
-        init();
     }
 
     public List<NewsListCommentComponent> init() {
-        if (comments == null) {
-            comments = new LinkedList<>();
-            driver.findElements(COMMENTS.getPath())
-                    .forEach(webElement -> comments.add(new NewsListCommentComponent(driver, webElement)));
-        }
+        comments = new LinkedList<>();
+        driver.findElements(COMMENTS.getPath())
+                .forEach(webElement -> comments.add(new NewsListCommentComponent(driver, webElement)));
         return comments;
     }
 
     public NewsListCommentComponent get(int i) {
+        init();
         return comments.get(i);
     }
 }

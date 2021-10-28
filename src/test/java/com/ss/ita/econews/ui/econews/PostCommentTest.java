@@ -25,7 +25,7 @@ public class PostCommentTest extends TestRuner {
                 .createAndPublicComment("some comment");
 
         int commentsListSize = page.numbersOfComments();
-        int commentsCountInLabel = Integer.parseInt(page.getCommentsCount().replaceAll("\\D", ""));
+        int commentsCountInLabel = page.getCommentsCountFromLabel();
         Assert.assertEquals(commentsCountInLabel, commentsListSize);
     }
 }
