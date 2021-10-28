@@ -237,10 +237,7 @@ public class NewsListCommentComponent extends BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Hide')]")));
         clickOnEditReplyButton();
         clickOnEditReplyHolder();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//div[contains(@class,'wrapper-reply')]//textarea[contains(@class,'edit-text-input')]")));
-        getEditReplyHolder()
-                .sendKeys(editMessage);
+        getEditReplyHolder().sendKeys(editMessage);
         clickOnSaveChangesButton();
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[text() =' Save changes ']")));
         return this;
