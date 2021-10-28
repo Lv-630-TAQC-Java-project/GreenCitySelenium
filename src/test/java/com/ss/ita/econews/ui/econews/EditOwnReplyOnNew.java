@@ -22,7 +22,7 @@ public class EditOwnReplyOnNew extends TestRuner {
                 .setCommentText("test example")
                 .clickCommentButton()
                 .getCommentByIndex(0)
-                .setReplyText("testText")
+                .createOneReplyToComment("testText")
                 .editReply("edited");
 
         String expectedMessage = "edited";

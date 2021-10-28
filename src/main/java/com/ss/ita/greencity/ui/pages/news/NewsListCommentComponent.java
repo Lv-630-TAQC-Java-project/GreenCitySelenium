@@ -54,12 +54,14 @@ public class NewsListCommentComponent extends BasePage {
         driver.findElement(VIEW_REPLY_BUTTON.getPath()).click();
         return this;
     }
-    public String getTextFromReply(){
-        if(editedReplyMessage == null){
-            editedReplyMessage = new Label(driver,EDITED_REPLY_MESSAGE);
+
+    public String getTextFromReply() {
+        if (editedReplyMessage == null) {
+            editedReplyMessage = new Label(driver, EDITED_REPLY_MESSAGE);
         }
         return editedReplyMessage.getText();
     }
+
     public NewsListCommentComponent clickReplyButton() {
         driver.findElement(REPLY_FIRST_COMMENT_BUTTON.getPath()).click();
         return this;
@@ -68,15 +70,18 @@ public class NewsListCommentComponent extends BasePage {
     public NewsListCommentComponent createAnotherReply(String replyText) {
         new NewsListCommentComponent(driver, root)
                 .setReplyText(replyText)
-                .clickPublishReplyButton();
+                .clickPublishReplyButton()
+                .clearReplyTextArea();
         return this;
     }
+
     public Button getApproveReplyButton() {
         if (acceptReply == null) {
             acceptReply = new Button(driver, ACCEPT_REPLY_HOLDER);
         }
         return acceptReply;
     }
+
     public NewsListCommentComponent setReplyText(String replyText) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//textarea[contains(@class,'invalid')]")));
         getReplyInput()
@@ -199,7 +204,7 @@ public class NewsListCommentComponent extends BasePage {
         return new Label(root.findElement(COMMENT_TEXT.getPath()));
     }
 
-    public void clickOnEditReplyHolder(){
+    public void clickOnEditReplyHolder() {
         getEditReplyHolder().clickInput();
     }
 
@@ -210,17 +215,19 @@ public class NewsListCommentComponent extends BasePage {
         }
         return saveChangesButton;
     }
+
     public Button getViewReplies() {
         if (viewReplies == null) {
             viewReplies = new Button(driver, VIEW_REPLIES);
         }
         return viewReplies;
     }
-    public void clickOnSaveChangesButton(){
+
+    public void clickOnSaveChangesButton() {
         getSaveChangesButton().clickButton();
     }
 
-    public void clickOnGetViewReplies(){
+    public void clickOnGetViewReplies() {
         getViewReplies().clickButton();
     }
 
@@ -230,7 +237,8 @@ public class NewsListCommentComponent extends BasePage {
         }
         return editReplyButton;
     }
-    public void clickOnEditReplyButton(){
+
+    public void clickOnEditReplyButton() {
         getEditReplyButton().clickButton();
     }
 
