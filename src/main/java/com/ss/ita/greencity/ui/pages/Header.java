@@ -9,8 +9,12 @@ import com.ss.ita.greencity.ui.locators.CreateNewsPageLocators;
 import com.ss.ita.greencity.ui.locators.HeaderLocators;
 import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
+
+import static com.ss.ita.greencity.ui.locators.HeaderLocators.LOG_IN_FORM;
 
 
 public class Header extends BasePage {
@@ -94,23 +98,20 @@ public class Header extends BasePage {
                 .setEmail(email)
                 .setPassword(password)
                 .goToMySpacePage();
-        try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        return new MySpacePage(driver);
 
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(LOG_IN_FORM.getPath()));
+
+        return new MySpacePage(driver);
     }
-    
+
     public HomePage logout() {
     	getHeader().getUnorderedList().clickUnorderedList();
     	getHeader().getListItemOut().clickListItem();
     	return new HomePage(driver);
-    	
+
     }
-    
+
 	public UnorderedList getUnorderedList() {
 		if (profileOptions == null) {
 			profileOptions = new UnorderedList(driver, HeaderLocators.PROFILE_OPTIONS);
