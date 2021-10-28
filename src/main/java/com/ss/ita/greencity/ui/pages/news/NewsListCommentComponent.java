@@ -6,17 +6,27 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static com.ss.ita.greencity.ui.locators.NewsListCommentsLocators.*;
-import static com.ss.ita.greencity.ui.locators.NewsLocators.COMMENTS_LIST;
+import static com.ss.ita.greencity.ui.locators.NewsListCommentsLocators.COMMENT_TEXT;
+import static com.ss.ita.greencity.ui.locators.NewsLocators.*;
 
 public class NewsListCommentComponent extends BasePage {
 
     private WebElement root;
-    private Label content;
     private TextArea replyInput;
     private Button postReply;
     private TextArea editCommentField;
+    private Button viewReplies;
+    private Button acceptReply;
+    private Input editReplyHolder;
+    private Button editReplyButton;
+    private Button saveChangesButton;
+    private Label editedReplyMessage;
+
+    WebDriverWait wait = new WebDriverWait(driver, 10);
 
     public NewsListCommentComponent(WebDriver driver, WebElement root) {
         super(driver);
@@ -44,7 +54,12 @@ public class NewsListCommentComponent extends BasePage {
         driver.findElement(VIEW_REPLY_BUTTON.getPath()).click();
         return this;
     }
-
+    public String getTextFromReply(){
+        if(editedReplyMessage == null){
+            editedReplyMessage = new Label(driver,EDITED_REPLY_MESSAGE);
+        }
+        return editedReplyMessage.getText();
+    }
     public NewsListCommentComponent clickReplyButton() {
         driver.findElement(REPLY_FIRST_COMMENT_BUTTON.getPath()).click();
         return this;
@@ -56,10 +71,20 @@ public class NewsListCommentComponent extends BasePage {
                 .clickPublishReplyButton();
         return this;
     }
-
+    public Button getApproveReplyButton() {
+        if (acceptReply == null) {
+            acceptReply = new Button(driver, ACCEPT_REPLY_HOLDER);
+        }
+        return acceptReply;
+    }
     public NewsListCommentComponent setReplyText(String replyText) {
-        getReplyInput().clickTextArea();
-        getReplyInput().sendKeysTextArea(replyText);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//textarea[contains(@class,'invalid')]")));
+        clickReplyButton();
+        getReplyInput()
+                .clickTextArea();
+        getReplyInput()
+                .sendKeysTextArea(replyText);
+       getApproveReplyButton().clickButton();
         return this;
     }
 
@@ -162,5 +187,59 @@ public class NewsListCommentComponent extends BasePage {
 
     public Label getContent() {
         return new Label(root.findElement(COMMENT_TEXT.getPath()));
+    }
+
+    public void clickOnEditReplyHolder(){
+        getEditReplyHolder().clickInput();
+    }
+
+
+    public Button getSaveChangesButton() {
+        if (saveChangesButton == null) {
+            saveChangesButton = new Button(driver, SAVE_CHANGES_BUTTON);
+        }
+        return saveChangesButton;
+    }
+    public Button getViewReplies() {
+        if (viewReplies == null) {
+            viewReplies = new Button(driver, VIEW_REPLIES);
+        }
+        return viewReplies;
+    }
+    public void clickOnSaveChangesButton(){
+        getSaveChangesButton().clickButton();
+    }
+
+    public void clickOnGetViewReplies(){
+        getViewReplies().clickButton();
+    }
+
+    public Button getEditReplyButton() {
+        if (editReplyButton == null) {
+            editReplyButton = new Button(driver, EDIT_REPLY_BUTTON);
+        }
+        return editReplyButton;
+    }
+    public void clickOnEditReplyButton(){
+        getEditReplyButton().clickButton();
+    }
+
+    public Input getEditReplyHolder() {
+        if (editReplyHolder == null) {
+            editReplyHolder = new Input(driver, EDIT_REPLY_HOLDER);
+        }
+        return editReplyHolder;
+    }
+
+    public NewsListCommentComponent editReply(String editMessage) {
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//button[text()=' Reply ']")));
+        clickOnGetViewReplies();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Hide')]")));
+        clickOnEditReplyButton();
+        clickOnEditReplyHolder();
+        getEditReplyHolder().sendKeys(editMessage);
+        clickOnSaveChangesButton();
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//span[text() =' Save changes ']")));
+        return this;
     }
 }
