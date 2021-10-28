@@ -3,6 +3,8 @@ package com.ss.ita.greencity.ui.pages;
 import com.ss.ita.greencity.ui.elements.Button;
 import com.ss.ita.greencity.ui.elements.LanguageSwitcher;
 import com.ss.ita.greencity.ui.elements.Link;
+import com.ss.ita.greencity.ui.elements.ListItem;
+import com.ss.ita.greencity.ui.elements.UnorderedList;
 import com.ss.ita.greencity.ui.locators.CreateNewsPageLocators;
 import com.ss.ita.greencity.ui.locators.HeaderLocators;
 import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
@@ -21,6 +23,8 @@ public class Header extends BasePage {
     private Link ecoNewsLink;
     private LanguageSwitcher lngSwitcher;
     private Button signInButton;
+    private UnorderedList profileOptions;
+    private ListItem signOut;
 
     public Header(WebDriver driver) {
         super(driver);
@@ -100,5 +104,25 @@ public class Header extends BasePage {
 
         return new MySpacePage(driver);
     }
+
+    public HomePage logout() {
+    	getHeader().getUnorderedList().clickUnorderedList();
+    	getHeader().getListItemOut().clickListItem();
+    	return new HomePage(driver);
+
+    }
+
+	public UnorderedList getUnorderedList() {
+		if (profileOptions == null) {
+			profileOptions = new UnorderedList(driver, HeaderLocators.PROFILE_OPTIONS);
+		}
+		return profileOptions;
+	}
+	public ListItem getListItemOut() {
+		if (signOut == null) {
+			signOut = new ListItem(driver, HeaderLocators.SIGN_OUT);
+		}
+		return signOut;
+	}
 
 }
