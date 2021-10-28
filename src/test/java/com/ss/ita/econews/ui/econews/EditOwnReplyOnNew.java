@@ -19,7 +19,7 @@ public class EditOwnReplyOnNew extends TestRuner {
                 .getHeader().clickEcoNewsLink()
                  .getNews()
                 .get(0).click()
-                .setCommentText("test ex")
+                .setCommentText("test example")
                 .clickCommentButton()
                 .getCommentByIndex(0)
                 .setReplyText("testText")
