@@ -13,7 +13,8 @@ public enum HeaderLocators implements BaseLocator {
     SIGN_IN(By.xpath("//a[normalize-space()='Sign in']")),
     EMAIL(By.id("email")),
     PASSWORD(By.id("password")),
-    SIGN_IN_IN_WINDOW(By.xpath("//button[@type='submit']"));
+    SIGN_IN_IN_WINDOW(By.xpath("//button[@type='submit']")),
+    LOG_IN_FORM(By.xpath("//app-auth-modal"));
 
     private final By path;
 
