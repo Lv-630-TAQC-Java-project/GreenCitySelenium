@@ -1,21 +1,14 @@
 package com.ss.ita.greencity.ui.pages.news;
 
-import com.ss.ita.greencity.ui.elements.Button;
-import com.ss.ita.greencity.ui.elements.Input;
-import com.ss.ita.greencity.ui.elements.Label;
 import com.ss.ita.greencity.ui.elements.TextArea;
 import com.ss.ita.greencity.ui.pages.BasePage;
-
 import org.openqa.selenium.By;
-
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 
 import static com.ss.ita.greencity.ui.locators.NewsLocators.*;
-import static com.ss.ita.greencity.ui.locators.NewsLocators.REPLY_BUTTON;
 
 public class NewsPage extends BasePage {
 
@@ -87,7 +80,14 @@ public class NewsPage extends BasePage {
         return this;
     }
 
-    public String getCommentsCount() {
+    public int getCommentsCountFromLabel() {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until((ExpectedCondition<Boolean>) driver -> getCommentsCountLabel().matches("\\s*\\d\\s*\\w+\\s*"));
+
+        return Integer.parseInt(getCommentsCountLabel().replaceAll("\\D", ""));
+    }
+
+    public String getCommentsCountLabel(){
         return driver.findElement(COMMENTS_COUNT_LABEL.getPath()).getAttribute("textContent");
     }
 
