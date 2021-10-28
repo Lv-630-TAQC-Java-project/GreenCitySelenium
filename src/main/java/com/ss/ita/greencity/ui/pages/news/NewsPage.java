@@ -65,8 +65,8 @@ public class NewsPage extends BasePage {
     public NewsPage createAndPublicComment(String commentText) {
         new NewsPage(driver)
                 .setCommentText(commentText)
-                .clickCommentButton();
-               // .waitForCommentAction(10);
+                .clickCommentButton()
+                .waitForCommentAction(10);
         return this;
     }
 
