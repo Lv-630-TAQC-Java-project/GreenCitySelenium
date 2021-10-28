@@ -82,7 +82,7 @@ public class CommentTest extends TestRuner {
                 .createAndPublicComment("Comment")
                 .getCommentByIndex(0)
                 .createOneReplyToComment(replyText);
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 11; i++) {
             newsListCommentComponent.createAnotherReply(replyText);
         }
         newsListCommentComponent.clickViewReplyButton();
