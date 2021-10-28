@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-
 public class EditCommentTest extends TestRuner {
 
     /**
@@ -28,8 +27,7 @@ public class EditCommentTest extends TestRuner {
                 .getHeader().clickEcoNewsLink()
                 .getNews()
                 .get(0).click()
-                .setCommentText(primaryComment)
-                .clickCommentButton()
+                .createAndPublicComment(primaryComment)
                 .getCommentByIndex(0)
                 .editComment(secondaryComment)
                 .getContent()

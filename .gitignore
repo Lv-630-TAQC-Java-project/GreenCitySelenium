@@ -22,3 +22,5 @@ test-output
 
 src/test/resources/webdrivers/
 allure-results/
+
+credential.properties

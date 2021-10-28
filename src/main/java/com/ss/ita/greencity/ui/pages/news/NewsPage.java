@@ -2,15 +2,11 @@ package com.ss.ita.greencity.ui.pages.news;
 
 import com.ss.ita.greencity.ui.elements.TextArea;
 import com.ss.ita.greencity.ui.pages.BasePage;
-
 import org.openqa.selenium.By;
-
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 
 import static com.ss.ita.greencity.ui.locators.NewsLocators.*;
 
@@ -20,7 +16,6 @@ public class NewsPage extends BasePage {
         super(driver);
     }
 
-    private WebElement root;
     private TextArea commentInput;
     private NewsListComponent comments;
 
@@ -95,11 +90,10 @@ public class NewsPage extends BasePage {
     public String getCommentsCountLabel(){
         return driver.findElement(COMMENTS_COUNT_LABEL.getPath()).getAttribute("textContent");
     }
-    
+
     public NewsListCommentComponent getCommentByIndex(int index) {
             comments = new NewsListComponent(driver);
 
         return comments.get(index);
     }
-
 }

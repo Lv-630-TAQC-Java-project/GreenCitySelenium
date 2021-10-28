@@ -7,8 +7,12 @@ import com.ss.ita.greencity.ui.locators.CreateNewsPageLocators;
 import com.ss.ita.greencity.ui.locators.HeaderLocators;
 import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
+
+import static com.ss.ita.greencity.ui.locators.HeaderLocators.LOG_IN_FORM;
 
 
 public class Header extends BasePage {
@@ -90,8 +94,11 @@ public class Header extends BasePage {
                 .setEmail(email)
                 .setPassword(password)
                 .goToMySpacePage();
-        return new MySpacePage(driver);
 
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(LOG_IN_FORM.getPath()));
+
+        return new MySpacePage(driver);
     }
 
 }
