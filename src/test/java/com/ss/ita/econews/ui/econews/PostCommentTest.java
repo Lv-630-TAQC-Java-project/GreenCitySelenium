@@ -36,7 +36,7 @@ public class PostCommentTest extends TestRuner {
         wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(COMMENTS_LIST.getPath()));
 
         int commentsListSize = newsPage.numbersOfComments();
-        int commentsCountInLabel = Integer.parseInt(newsPage.getCommentsCount().replaceAll("\\D", ""));
+        int commentsCountInLabel = newsPage.getCommentsCountFromLabel();
         Assert.assertEquals(commentsCountInLabel, commentsListSize);
     }
 }

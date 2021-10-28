@@ -8,6 +8,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static com.ss.ita.greencity.ui.locators.NewsLocators.*;
 
@@ -84,7 +87,14 @@ public class NewsPage extends BasePage {
         return this;
     }
 
-    public String getCommentsCount() {
+    public int getCommentsCountFromLabel() {
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until((ExpectedCondition<Boolean>) driver -> getCommentsCountLabel().matches("\\s*\\d\\s*\\w+\\s*"));
+
+        return Integer.parseInt(getCommentsCountLabel().replaceAll("\\D", ""));
+    }
+
+    public String getCommentsCountLabel(){
         return driver.findElement(COMMENTS_COUNT_LABEL.getPath()).getAttribute("textContent");
     }
 

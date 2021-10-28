@@ -67,8 +67,8 @@ public class Header extends BasePage {
         return lngSwitcher;
     }
 
-    public Header clickLanguageSwitcherEn() {
-        getLngSwitcherEn().click();
+    public Header changeLanguageEn() {
+    	clickLanguageSwitcher().getLngSwitcherEn().click();
         return new Header(driver);
     }
 
@@ -86,19 +86,10 @@ public class Header extends BasePage {
 
     public MySpacePage login(String email, String password) {
         getHeader()
-                .clickLanguageSwitcher()
-                .clickLanguageSwitcherEn()
                 .goToSignPage()
                 .setEmail(email)
                 .setPassword(password)
                 .goToMySpacePage();
-
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } // ONLY FOR PRESENTATION
-
         return new MySpacePage(driver);
 
     }
