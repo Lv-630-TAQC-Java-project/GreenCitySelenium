@@ -12,6 +12,7 @@ public class ChangeLanguageTest extends TestRuner {
                 .changeLanguageToUkr();
 
         String homePageTitle = homePage.getHomePageTitleUkr().getText();
-        Assert.assertEquals(homePageTitle, "Новий спосіб виховати в собі корисні звички");
+        String expectedTitle = "Новий спосіб виховати в собі корисні звички";
+        Assert.assertEquals(homePageTitle, expectedTitle);
     }
 }
