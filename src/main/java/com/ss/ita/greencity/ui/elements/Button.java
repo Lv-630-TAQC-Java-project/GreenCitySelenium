@@ -2,12 +2,17 @@ package com.ss.ita.greencity.ui.elements;
 
 import com.ss.ita.greencity.ui.locators.BaseLocator;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.Color;
 
 public class Button extends BaseWebElement {
 
     public Button(WebDriver driver, BaseLocator locator) {
         super(driver, locator);
+    }
+
+    public Button(WebDriver driver, WebElement element, BaseLocator locator) {
+        super(driver, element, locator);
     }
 
     public void clickButton() {

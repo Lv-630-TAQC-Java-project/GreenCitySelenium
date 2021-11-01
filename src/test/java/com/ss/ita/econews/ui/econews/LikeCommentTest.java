@@ -26,31 +26,49 @@ private NewsPage singleNews;
  
 	@Test
 	public void verifyLikeDislikeComment() {
-		
-		int likesAmount = Integer.parseInt(singleNews.getCommentByIndex(0).getLikesCount());
-		singleNews.getCommentByIndex(0).pressLikeButton();
+		int likesAmount = Integer.parseInt(singleNews.getCommentByIndex(1).getLikesCount());
+		singleNews.getCommentByIndex(1).pressLikeButton();
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} // FOR PRESENTATION ONLY!
+		softAssert.assertEquals(Integer.parseInt(singleNews.getCommentByIndex(1).getLikesCount()), likesAmount + 1);
 
-		softAssert.assertEquals(Integer.parseInt(singleNews.getCommentByIndex(0).getLikesCount()), likesAmount + 1);
-		singleNews.getCommentByIndex(0).pressLikeButton();
+		likesAmount = Integer.parseInt(singleNews.getCommentByIndex(1).getLikesCount());
+		singleNews.getCommentByIndex(1).pressLikeButton();
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} // FOR PRESENTATION ONLY!
-
-		likesAmount = Integer.parseInt(singleNews.getCommentByIndex(0).getLikesCount());
-		softAssert.assertEquals(Integer.parseInt(singleNews.getCommentByIndex(0).getLikesCount()), likesAmount - 1);
+		softAssert.assertEquals(Integer.parseInt(singleNews.getCommentByIndex(1).getLikesCount()), likesAmount - 1);
 		try {
 			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} // FOR PRESENTATION ONLY!
+		softAssert.assertAll();
 	}
-	
+
+	@Test
+	public void verifyLikeDislikeReply() {
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} // FOR PRESENTATION ONLY!
+
+		singleNews.getCommentByIndex(1).pressViewReplyButton();
+
+
+		try {
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		} // FOR PRESENTATION ONLY!
+		softAssert.assertAll();
+	}
+
 
 }
