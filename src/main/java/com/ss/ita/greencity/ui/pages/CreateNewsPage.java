@@ -78,10 +78,7 @@ public class CreateNewsPage extends BasePage {
     }
 
     public Button getTag_News_button() {
-        if (news_button == null) {
-            news_button = new Button(driver, NEWS_TAG_BUTTON);
-        }
-        return news_button;
+           return new Button(driver, NEWS_TAG_BUTTON);
     }
 
     public CreateNewsPage clickTagNewsButton() {
