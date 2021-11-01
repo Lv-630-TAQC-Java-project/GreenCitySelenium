@@ -17,7 +17,6 @@ public enum NewsLocators implements BaseLocator {
     EDIT_REPLY_HOLDER(By.xpath("//div[contains(@class,'wrapper-reply')]//textarea[contains(@class,'edit-text-input')]")),
     SAVE_CHANGES_BUTTON(By.xpath("//span[text() =' Save changes ']")),
     EDITED_REPLY_MESSAGE(By.xpath("//p[text() ='edited']")),
-    COMMENTS_LIST(By.xpath(".//app-comments-list/div")),
 	LIKE_COUNT(By.cssSelector("span.like-amount")),
 	LIKE_BUTTON(By.cssSelector("button.cta-btn.like"));
 
