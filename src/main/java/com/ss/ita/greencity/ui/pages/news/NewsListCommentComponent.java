@@ -18,6 +18,7 @@ import static com.ss.ita.greencity.ui.locators.NewsLocators.LIKE_COUNT;
 public class NewsListCommentComponent extends BasePage {
 
     private WebElement root;
+    private Button nextReplies;
     private TextArea replyInput;
     private Button postReply;
     private TextArea editCommentField;
@@ -33,14 +34,16 @@ public class NewsListCommentComponent extends BasePage {
 
     WebDriverWait wait = new WebDriverWait(driver, 10);
 
-	public NewsListCommentComponent(WebDriver driver, WebElement root) {
-		super(driver);
-		this.root = root;
-	}
+    public NewsListCommentComponent(WebDriver driver, WebElement root) {
+        super(driver);
+        this.root = root;
+    }
 
-	public NewsListCommentComponent createOneReplyToComment(String replyText) {
-		return clickReplyButton().createAnotherReply(replyText).clearReplyTextArea();
-	}
+    public NewsListCommentComponent createOneReplyToComment(String replyText) {
+        return clickReplyButton()
+                .createAnotherReply(replyText)
+                .clearReplyTextArea();
+    }
 
 	public NewsListCommentComponent clearReplyTextArea() {
 		getReplyInput().clickTextArea();
@@ -48,22 +51,23 @@ public class NewsListCommentComponent extends BasePage {
 		return this;
 	}
 
-	public int numberOfReplies() {
-		int count = driver.findElements(By.xpath("//div[contains(@class,'comment-body-wrapper wrapper-reply')]"))
-				.size();
-		return count;
-	}
+    public int numberOfReplies() {
+        int count = driver.findElements(By.xpath("//div[contains(@class,'comment-body-wrapper wrapper-reply')]")).size();
+        return count;
+    }
 
     public NewsListCommentComponent clickViewReplyButton() {
         driver.findElement(VIEW_REPLY_BUTTON.getPath()).click();
         return this;
     }
-    public String getTextFromReply(){
-        if(editedReplyMessage == null){
-            editedReplyMessage = new Label(driver,EDITED_REPLY_MESSAGE);
+
+    public String getTextFromReply() {
+        if (editedReplyMessage == null) {
+            editedReplyMessage = new Label(driver, EDITED_REPLY_MESSAGE);
         }
         return editedReplyMessage.getText();
     }
+
     public NewsListCommentComponent clickReplyButton() {
         driver.findElement(REPLY_FIRST_COMMENT_BUTTON.getPath()).click();
         return this;
@@ -72,32 +76,46 @@ public class NewsListCommentComponent extends BasePage {
     public NewsListCommentComponent createAnotherReply(String replyText) {
         new NewsListCommentComponent(driver, root)
                 .setReplyText(replyText)
-                .clickPublishReplyButton();
+                .clickPublishReplyButton()
+                .clearReplyTextArea();
         return this;
     }
+
     public Button getApproveReplyButton() {
         if (acceptReply == null) {
             acceptReply = new Button(driver, ACCEPT_REPLY_HOLDER);
         }
         return acceptReply;
     }
+
     public NewsListCommentComponent setReplyText(String replyText) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//textarea[contains(@class,'invalid')]")));
-        clickReplyButton();
-        getReplyInput()
-                .clickTextArea();
         getReplyInput()
                 .sendKeysTextArea(replyText);
-       getApproveReplyButton().clickButton();
         return this;
     }
 
-	public TextArea getReplyInput() {
-		if (replyInput == null) {
-			replyInput = new TextArea(driver, REPLY_TEXT_AREA);
-		}
-		return replyInput;
-	}
+    public NewsListCommentComponent clickNextRepliesButton() {
+        getNextRepliesButton().clickButton();
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.
+                numberOfElementsToBeLessThan(By.xpath("//div[contains(@class,'comment-body-wrapper wrapper-reply')]"), 10));
+        return this;
+    }
+
+    public Button getNextRepliesButton() {
+        if (nextReplies == null) {
+            nextReplies = new Button(driver, NEXT_REPLIES_BUTTON);
+        }
+        return nextReplies;
+    }
+
+    public TextArea getReplyInput() {
+        if (replyInput == null) {
+            replyInput = new TextArea(driver, REPLY_TEXT_AREA);
+        }
+        return replyInput;
+    }
 
 	public NewsListCommentComponent clickPublishReplyButton() {
 		driver.findElement(PUBLISH_REPLY_BUTTON.getPath()).click();
@@ -140,10 +158,10 @@ public class NewsListCommentComponent extends BasePage {
 		}
 	}
 
-	public NewsPage deleteFirstComment() {
-		clickDeleteCommentButton().clickApproveDeletingCommentButton().waitForCommentAction(10);
-		return new NewsPage(driver);
-	}
+    public NewsPage deleteFirstComment() {
+        clickDeleteCommentButton().clickApproveDeletingCommentButton().waitForCommentAction(10);
+        return new NewsPage(driver);
+    }
 
 	public NewsListCommentComponent clickDeleteCommentButton() {
 		driver.findElement(DELETE_FIRST_COMMENT_BUTTON.getPath()).click();
@@ -212,11 +230,9 @@ public class NewsListCommentComponent extends BasePage {
     	return new NewsListCommentComponent(driver, root);
     }
 
-
     public void clickOnEditReplyHolder(){
         getEditReplyHolder().clickInput();
     }
-
 
     public Button getSaveChangesButton() {
         if (saveChangesButton == null) {
@@ -224,17 +240,19 @@ public class NewsListCommentComponent extends BasePage {
         }
         return saveChangesButton;
     }
+
     public Button getViewReplies() {
         if (viewReplies == null) {
             viewReplies = new Button(driver, VIEW_REPLIES);
         }
         return viewReplies;
     }
-    public void clickOnSaveChangesButton(){
+
+    public void clickOnSaveChangesButton() {
         getSaveChangesButton().clickButton();
     }
 
-    public void clickOnGetViewReplies(){
+    public void clickOnGetViewReplies() {
         getViewReplies().clickButton();
     }
 
@@ -244,7 +262,8 @@ public class NewsListCommentComponent extends BasePage {
         }
         return editReplyButton;
     }
-    public void clickOnEditReplyButton(){
+
+    public void clickOnEditReplyButton() {
         getEditReplyButton().clickButton();
     }
 

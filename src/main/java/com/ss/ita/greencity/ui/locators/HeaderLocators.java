@@ -7,7 +7,7 @@ public enum HeaderLocators implements BaseLocator {
     ECO_NEWS_LINK(By.xpath("/html/body/app-root/app-main/div/app-header/header/div/div/div/nav/ul/li[1]/a")),
 
     LANGUAGE_SWITCHER(By.xpath("//*[@alt='language switcher']")),
-    UKRAINE_LANGUAGE_BUTTON(By.xpath("//*[@aria-label='ukrainian']")),
+    UKRAINE_LANGUAGE_BUTTON(By.xpath("//span[text()='Ua']")),
     LANGUAGE_SWITCHER_EN(By.cssSelector("li[aria-label=english]")),
     SIGN_IN_BUTTON(By.cssSelector("a.header_sign-in-link.tertiary-global-button")),
     SIGN_IN(By.xpath("//a[normalize-space()='Sign in']")),

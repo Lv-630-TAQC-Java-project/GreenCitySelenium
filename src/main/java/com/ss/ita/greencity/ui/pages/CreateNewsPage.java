@@ -3,6 +3,7 @@ package com.ss.ita.greencity.ui.pages;
 import com.ss.ita.greencity.ui.elements.Button;
 import com.ss.ita.greencity.ui.elements.Paragraph;
 import com.ss.ita.greencity.ui.elements.TextArea;
+import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
 import org.openqa.selenium.WebDriver;
 
 import static com.ss.ita.greencity.ui.locators.CreateNewsPageLocators.*;
@@ -140,9 +141,9 @@ public class CreateNewsPage extends BasePage {
         return publish_button;
     }
 
-    public CreateNewsPage clickPublishButton() {
+    public EcoNewsPage clickPublishButton() {
         getPublishButton().clickButton();
-        return new CreateNewsPage(driver);
+        return new EcoNewsPage(driver);
     }
 
     public void createNews() {

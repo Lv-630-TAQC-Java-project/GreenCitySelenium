@@ -64,7 +64,7 @@ public class EcoNewsPage extends BasePage {
     }
 
     public CreateNewsPage clickCreateNewsButton() {
-        WebElement createNewsButton = (new WebDriverWait(driver, 10))
+        new WebDriverWait(driver, 10)
                 .until(ExpectedConditions.presenceOfElementLocated(CreateNewsPageLocators.CREATE_BUTTON.getPath()));
         getCreateNewsButton().clickButton();
         return new CreateNewsPage(driver);
@@ -124,16 +124,5 @@ public class EcoNewsPage extends BasePage {
         return newsTag;
     }
 
-    public Button getFffNewsButton(){
-        if(newsButton == null){
-            newsButton = new Button(driver,FFFFFFFFFF_NEWS_TITLE);
-        }
 
-        return newsButton;
-    }
-
-    public NewsPage clickFffNewsButton(){
-        getFffNewsButton().clickButton();
-        return new NewsPage(driver);
-    }
 }

@@ -2,26 +2,33 @@ package com.ss.ita.econews.ui.econews;
 
 import com.ss.ita.econews.ui.runner.TestRuner;
 import com.ss.ita.greencity.ui.pages.*;
+import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
 import com.ss.ita.greencity.ui.pages.news.NewsListCommentComponent;
 import com.ss.ita.greencity.ui.pages.news.NewsPage;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
-
 
 import static com.ss.ita.econews.ui.data.UserSignInData.*;
 import static org.testng.Assert.*;
 
 public class CommentTest extends TestRuner {
 
-    private NewsPage loginAndGoToNews(int indexOfNews) {
-       NewsPage newsPage = new HomePage(driver)
+    @BeforeMethod
+    private NewsPage loginAndGoToCreateNews() {
+        CreateNewsPage createNewsPage = new HomePage(driver)
                 .getHeader()
                 .login(VLAD_DMYTRIV.getEmail(), VLAD_DMYTRIV.getPassword())
                 .getHeader()
                 .clickEcoNewsLink()
-                .getNewsByIndex(indexOfNews)
+                .clickCreateNewsButton()
+                .clickTagNewsButton();
+        createNewsPage.setTitleTextArea(System.currentTimeMillis() + "");
+        createNewsPage.setContentArea();
+        createNewsPage.clickPublishButton();
+        NewsPage newsPage = new EcoNewsPage(driver)
+                .getNewsByIndex(0)
                 .click();
         return newsPage;
     }
@@ -29,8 +36,7 @@ public class CommentTest extends TestRuner {
     @Test
     public void verifyCommentPublishingTest() {
         String commentText = UUID.randomUUID().toString();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        NewsPage newsPage = loginAndGoToNews(0);
+        NewsPage newsPage = loginAndGoToCreateNews();
         int commentsNumberBeforePostingComment = newsPage.numbersOfComments();
         newsPage.createAndPublicComment(commentText);
         int commentsNumberAfterPostingComment = newsPage.numbersOfComments();
@@ -42,9 +48,8 @@ public class CommentTest extends TestRuner {
     @Test
     public void verifyCommentDeletingWithRepliesTest() {
         String commentText = UUID.randomUUID().toString();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        NewsPage newsPage = loginAndGoToNews(0);
+        NewsPage newsPage = loginAndGoToCreateNews();
         int commentsNumberBeforePostingComment = newsPage.numbersOfComments();
         newsPage.createAndPublicComment(commentText);
         int commentsNumberAfterPostingComment = newsPage.numbersOfComments();
@@ -71,8 +76,19 @@ public class CommentTest extends TestRuner {
 
     @Test
     public void verifyReviewRepliesTest() {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+        String replyText = "Reply";
+        NewsListCommentComponent newsListCommentComponent = new NewsPage(driver)
+                .createAndPublicComment("Comment")
+                .getCommentByIndex(0)
+                .createOneReplyToComment(replyText);
+        for (int i = 0; i < 10; i++) {
+            newsListCommentComponent.createAnotherReply(replyText);
+        }
+        newsListCommentComponent.clickViewReplyButton();
+        int numberOfRepliesOnFirstSection = newsListCommentComponent.numberOfReplies();
+        newsListCommentComponent.clickNextRepliesButton();
+        int numberOfRepliesOnSecondSection = newsListCommentComponent.numberOfReplies();
+        assertTrue(numberOfRepliesOnFirstSection + numberOfRepliesOnSecondSection == 11);
     }
 }
 

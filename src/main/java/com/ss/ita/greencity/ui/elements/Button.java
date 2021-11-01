@@ -8,7 +8,6 @@ public class Button extends BaseWebElement {
 
     public Button(WebDriver driver, BaseLocator locator) {
         super(driver, locator);
-
     }
 
     public void clickButton() {
