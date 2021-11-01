@@ -16,12 +16,16 @@ public class Button extends BaseWebElement {
     }
 
     public boolean isEnabled() {
-        return  this.webElement.isEnabled();
+        return this.webElement.isEnabled();
     }
 
     public String getBackgroundHexColor() {
         String color = this.webElement.getCssValue("background-color");
         return Color.fromString(color).asHex();
+    }
+
+    public String getText() {
+        return this.webElement.getText();
     }
 
 }
