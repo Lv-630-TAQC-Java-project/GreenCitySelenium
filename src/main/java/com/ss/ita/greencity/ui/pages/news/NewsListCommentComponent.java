@@ -209,7 +209,7 @@ public class NewsListCommentComponent extends BasePage {
 
 	public Span getSpanLikesCount() {
 		if (likesCount == null) {
-			likesCount = new Span(driver, LIKE_COUNT);
+			likesCount = new Span(driver,root, LIKE_COUNT);
 		}
 		return likesCount;
 	}
@@ -220,7 +220,7 @@ public class NewsListCommentComponent extends BasePage {
 
     public Button getLikeButton() {
     	if(like == null) {
-    		like = new Button(driver,NewsLocators.LIKE_BUTTON);
+    		like = new Button(driver,root, NewsLocators.LIKE_BUTTON);
     	}
     	return like;
     }
@@ -243,9 +243,14 @@ public class NewsListCommentComponent extends BasePage {
 
     public Button getViewReplies() {
         if (viewReplies == null) {
-            viewReplies = new Button(driver, VIEW_REPLIES);
+            viewReplies = new Button(driver, root, VIEW_REPLY);
         }
         return viewReplies;
+    }
+
+    public NewsListCommentComponent pressViewReplyButton() {
+        getViewReplies().clickButton();
+        return new NewsListCommentComponent(driver, root);
     }
 
     public void clickOnSaveChangesButton() {
