@@ -19,6 +19,7 @@ public class EcoNewsListItemComponent extends BasePage {
     private Label tag;
     private Label data;
     private Label author;
+    private Label newsTag;
 
 
     public EcoNewsListItemComponent(WebDriver driver, WebElement root) {
@@ -75,6 +76,13 @@ public class EcoNewsListItemComponent extends BasePage {
 
     public String getNewsClass() {
         return this.root.getAttribute("class");
+    }
+
+    public Label getNewsTag(){
+        if (newsTag == null) {
+            newsTag = new Label(driver, root, EcoNewsListItemLocators.TAG_NEWS_LABEL);
+        }
+        return newsTag;
     }
 
 }

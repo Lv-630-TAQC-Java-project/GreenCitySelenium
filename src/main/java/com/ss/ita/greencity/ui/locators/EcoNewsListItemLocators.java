@@ -11,7 +11,8 @@ public enum EcoNewsListItemLocators implements BaseLocator {
     TAG_LABEL(By.xpath(".//app-news-list-gallery-view/div/div/div[1]/div")),
     DATA_LABEL(By.xpath(".//div[3]/p[1]")),
     IMAGE_LABEL(By.xpath(".//div/img")),
-    AUTHOR_LABEL(By.xpath(".//div[3]/p[2]"));
+    AUTHOR_LABEL(By.xpath(".//div[3]/p[2]")),
+    TAG_NEWS_LABEL(By.xpath("//div[@class = 'ul-eco-buttons' and text() = ' News ']"));
 
     private final By path;
 
