@@ -38,4 +38,7 @@ public class CredentialProperties {
     public String getTestUserGC871Login() { return prop.getProperty("TEST_USER_GC_871_LOGIN"); }
     public String getTestUserGC871Password() { return prop.getProperty("TEST_USER_GC_871_PASS"); }
 
+    public String getNastiaSydorLogin() { return prop.getProperty("NASTIA_SYDOR_LOGIN"); }
+    public String getNastiaSydorPassword() { return prop.getProperty("NASTIA_SYDOR_PASS"); }
+
 }
