@@ -51,4 +51,13 @@ public abstract class BasePage {
             return false;
         }
     }
+
+    public long pause(long milliSec) {
+        long startTime = System.currentTimeMillis();
+        Long pauseDuration = 0L;
+        while (System.currentTimeMillis() - startTime <= milliSec) {
+            pauseDuration = System.currentTimeMillis() - startTime;
+        }
+        return pauseDuration;
+    }
 }
