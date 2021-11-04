@@ -21,6 +21,7 @@ public class CreateNewsPage extends BasePage {
     private Button education_button;
     private Button publish_button;
     private Button selectedNewsButton;
+    private Button browseImgButton;
     private ImageArea imgArea;
 
     public CreateNewsPage(WebDriver driver) {
@@ -201,9 +202,16 @@ public class CreateNewsPage extends BasePage {
         return imgArea;
     }
 
-    public ImageArea setPictureArea() {
-        getTitle_area().sendKeysTextArea("//src/test/resources/TestData");
-        return new ImageArea(driver, PICTURE_IMG_AREA);
+//    public ImageArea setPictureArea() {
+//        browseImgButton.("//src/test/resources/TestData");
+//        return new ImageArea(driver, PICTURE_IMG_AREA);
+//    }
+
+    public Button getBrowseImgButton() {
+        if (browseImgButton == null) {
+            browseImgButton = new Button(driver, BROWSE_BUTTON_IMG_AREA);
+        }
+        return browseImgButton;
     }
 
 }

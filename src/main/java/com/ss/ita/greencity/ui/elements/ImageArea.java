@@ -24,4 +24,8 @@ public class ImageArea extends BaseWebElement {
         Actions act=new Actions(driver);
         act.dragAndDrop(From, To);
     }
+
+    public void sendKeysImageArea(String text) {
+        this.webElement.sendKeys(text);
+    }
 }

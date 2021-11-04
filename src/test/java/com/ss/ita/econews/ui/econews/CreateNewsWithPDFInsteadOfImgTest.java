@@ -8,10 +8,6 @@ import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
 import com.ss.ita.greencity.ui.pages.news.NewsPage;
 import org.testng.annotations.Test;
 
-import java.util.UUID;
-
-import static com.ss.ita.econews.ui.data.UserSignInData.VLAD_DMYTRIV;
-import static org.testng.Assert.assertTrue;
 
 public class CreateNewsWithPDFInsteadOfImgTest extends TestRuner {
 
