@@ -6,9 +6,13 @@ import com.ss.ita.greencity.ui.locators.CreateNewsPageLocators;
 import com.ss.ita.greencity.ui.locators.EcoNewsListLocators;
 import com.ss.ita.greencity.ui.pages.BasePage;
 import com.ss.ita.greencity.ui.pages.CreateNewsPage;
+import com.ss.ita.greencity.ui.pages.HomePage;
 import com.ss.ita.greencity.ui.pages.news.NewsPage;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -117,6 +121,5 @@ public class EcoNewsPage extends BasePage {
         getNewsButton().clickButton();
         return new NewsPage(driver);
     }
-
-
 }
+
