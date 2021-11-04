@@ -1,5 +1,7 @@
 package com.ss.ita.econews.ui.econews;
 
+import com.ss.ita.econews.ui.CredentialProperties;
+import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import com.ss.ita.econews.ui.runner.TestRuner;
@@ -14,9 +16,10 @@ private NewsPage singleNews;
 
 @BeforeClass
 	public void goToSingleNews() {
+	CredentialProperties prop = new CredentialProperties();
 		singleNews = new HomePage(driver)
 				.getHeader()
-				.login(TEST_ACCOUNT.getEmail(), TEST_ACCOUNT.getPassword())
+				.login(prop.getTestAccountLogin(), prop.getTestAccountPassword())
 				.clickHomePageLink()
 				.clickEcoNewsLink()
 				.getNews()
@@ -26,49 +29,21 @@ private NewsPage singleNews;
  
 	@Test
 	public void verifyLikeDislikeComment() {
-		int likesAmount = Integer.parseInt(singleNews.getCommentByIndex(1).getLikesCount());
+        int likesAmount = Integer.parseInt(singleNews.getCommentByIndex(1).getLikesCount());
 		singleNews.getCommentByIndex(1).pressLikeButton();
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} // FOR PRESENTATION ONLY!
-		softAssert.assertEquals(Integer.parseInt(singleNews.getCommentByIndex(1).getLikesCount()), likesAmount + 1);
-
-		likesAmount = Integer.parseInt(singleNews.getCommentByIndex(1).getLikesCount());
-		singleNews.getCommentByIndex(1).pressLikeButton();
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} // FOR PRESENTATION ONLY!
-		softAssert.assertEquals(Integer.parseInt(singleNews.getCommentByIndex(1).getLikesCount()), likesAmount - 1);
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} // FOR PRESENTATION ONLY!
-		softAssert.assertAll();
+		new EcoNewsPage(driver).pause(2000);
+		String actualLikeButtonText = singleNews.getCommentByIndex(1).getLikeButtonText();
+		String expectedLikeButtonText = "Liked";
+        softAssert.assertEquals(Integer.parseInt(singleNews.getCommentByIndex(1).getLikesCount()), likesAmount + 1);
+		softAssert.assertEquals(actualLikeButtonText, expectedLikeButtonText);
+        likesAmount = Integer.parseInt(singleNews.getCommentByIndex(1).getLikesCount());
+        singleNews.getCommentByIndex(1).pressLikeButton();
+        new EcoNewsPage(driver).pause(2000);
+		actualLikeButtonText = singleNews.getCommentByIndex(1).getLikeButtonText();
+		expectedLikeButtonText = "Like";
+		softAssert.assertEquals(actualLikeButtonText, expectedLikeButtonText);
+        softAssert.assertEquals(Integer.parseInt(singleNews.getCommentByIndex(1).getLikesCount()), likesAmount - 1);
+        softAssert.assertAll();
 	}
-
-	@Test
-	public void verifyLikeDislikeReply() {
-		try {
-			Thread.sleep(3000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} // FOR PRESENTATION ONLY!
-
-		singleNews.getCommentByIndex(1).pressViewReplyButton();
-
-
-		try {
-			Thread.sleep(10000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		} // FOR PRESENTATION ONLY!
-		softAssert.assertAll();
-	}
-
 
 }

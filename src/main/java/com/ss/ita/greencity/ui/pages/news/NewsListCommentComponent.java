@@ -30,6 +30,7 @@ public class NewsListCommentComponent extends BasePage {
     private Label editedReplyMessage;
     private Label content;
     private Span likesCount;
+    private Span likeButtonLabel;
     private Button like;
 
     WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -207,16 +208,27 @@ public class NewsListCommentComponent extends BasePage {
 		return new Label(root.findElement(COMMENT_TEXT.getPath()));
 	}
 
-	public Span getSpanLikesCount() {
-		if (likesCount == null) {
-			likesCount = new Span(driver,root, LIKE_COUNT);
-		}
-		return likesCount;
-	}
+    public Span getLikeButtonLabel() {
+        if (likeButtonLabel == null) {
+            likeButtonLabel = new Span(driver, root, LIKE_BUTTON_LABEL);
+        }
+        return likeButtonLabel;
+    }
+
+    public String getLikeButtonText() {
+        return getLikeButtonLabel().getText();
+    }
 
 	public String getLikesCount() {
     	return getSpanLikesCount().getText();
 	}
+
+    public Span getSpanLikesCount() {
+        if (likesCount == null) {
+            likesCount = new Span(driver,root, LIKE_COUNT);
+        }
+        return likesCount;
+    }
 
     public Button getLikeButton() {
     	if(like == null) {
