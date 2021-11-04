@@ -15,9 +15,7 @@ public class EditCommentTest extends TestRuner {
      * edit its own comment on the 'News' page
      */
     @Test
-    public void editComment() {
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
+    public void verifyUserCanEditCommentTest() {
         String primaryComment = System.currentTimeMillis() + "";
         String secondaryComment = primaryComment + "s";
 
@@ -25,8 +23,12 @@ public class EditCommentTest extends TestRuner {
                 .getHeader()
                 .login(UserSignInData.TEST_USER.getEmail(), UserSignInData.TEST_USER.getPassword())
                 .getHeader().clickEcoNewsLink()
-                .getNews()
-                .get(0).click()
+                .clickCreateNewsButton()
+                .setTitle("Edit comment test")
+                .clickTagNewsButton()
+                .setContent("This test case verifies, that logged user can edit its own comment on the 'News' page")
+                .clickPublishButton()
+                .getNewsByIndex(0).click()
                 .createAndPublicComment(primaryComment)
                 .getCommentByIndex(0)
                 .editComment(secondaryComment)
