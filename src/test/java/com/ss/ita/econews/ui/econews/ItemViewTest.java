@@ -41,7 +41,7 @@ public class ItemViewTest extends TestRuner {
                 .getNews()
                 .get(0);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy", Locale.US);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d, yyyy", Locale.US);
         boolean valid;
         try {
             LocalDate.parse((ecoNewsItem.getData().getText()), formatter);
