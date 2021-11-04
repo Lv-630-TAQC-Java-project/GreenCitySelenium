@@ -1,6 +1,7 @@
 package com.ss.ita.greencity.ui.pages;
 
 import com.ss.ita.greencity.ui.elements.Button;
+import com.ss.ita.greencity.ui.elements.ImageArea;
 import com.ss.ita.greencity.ui.elements.Paragraph;
 import com.ss.ita.greencity.ui.elements.TextArea;
 import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
@@ -20,6 +21,7 @@ public class CreateNewsPage extends BasePage {
     private Button education_button;
     private Button publish_button;
     private Button selectedNewsButton;
+    private ImageArea imgArea;
 
     public CreateNewsPage(WebDriver driver) {
         super(driver);
@@ -192,5 +194,16 @@ public class CreateNewsPage extends BasePage {
         return this;
     }
 
+    public ImageArea getPictureArea() {
+        if (imgArea == null) {
+            imgArea = new ImageArea(driver, PICTURE_IMG_AREA);
+        }
+        return imgArea;
+    }
+
+    public ImageArea setPictureArea() {
+        getTitle_area().sendKeysTextArea("//src/test/resources/TestData");
+        return new ImageArea(driver, PICTURE_IMG_AREA);
+    }
 
 }
