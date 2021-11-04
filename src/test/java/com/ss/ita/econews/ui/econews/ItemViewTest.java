@@ -7,17 +7,13 @@ import com.ss.ita.greencity.ui.pages.CreateNewsPage;
 import com.ss.ita.greencity.ui.pages.HomePage;
 import com.ss.ita.greencity.ui.pages.econews.EcoNewsListItemComponent;
 import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
-import com.ss.ita.greencity.ui.pages.news.NewsPage;
 import org.openqa.selenium.Point;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Locale;
-
-import static com.ss.ita.econews.ui.data.UserSignInData.VLAD_DMYTRIV;
 
 
 public class ItemViewTest extends TestRuner {
