@@ -1,11 +1,10 @@
 package com.ss.ita.greencity.ui.pages;
 
-import com.ss.ita.greencity.ui.elements.Button;
-import com.ss.ita.greencity.ui.elements.ImageArea;
-import com.ss.ita.greencity.ui.elements.Paragraph;
-import com.ss.ita.greencity.ui.elements.TextArea;
+import com.ss.ita.greencity.ui.elements.*;
 import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static com.ss.ita.greencity.ui.locators.CreateNewsPageLocators.*;
 
@@ -21,8 +20,9 @@ public class CreateNewsPage extends BasePage {
     private Button education_button;
     private Button publish_button;
     private Button selectedNewsButton;
-    private Button browseImgButton;
-    private ImageArea imgArea;
+    private Button uploadImgButton;
+    private ImageArea imgWarningArea;
+    private Span warning;
 
     public CreateNewsPage(WebDriver driver) {
         super(driver);
@@ -195,23 +195,31 @@ public class CreateNewsPage extends BasePage {
         return this;
     }
 
-    public ImageArea getPictureArea() {
-        if (imgArea == null) {
-            imgArea = new ImageArea(driver, PICTURE_IMG_AREA);
+    public ImageArea getPictureWarningArea() {
+        if (imgWarningArea == null) {
+            imgWarningArea = new ImageArea(driver, PICTURE_IMG_AREA_WITH_WARNING);
         }
-        return imgArea;
+        return imgWarningArea;
     }
 
-//    public ImageArea setPictureArea() {
-//        browseImgButton.("//src/test/resources/TestData");
-//        return new ImageArea(driver, PICTURE_IMG_AREA);
-//    }
-
-    public Button getBrowseImgButton() {
-        if (browseImgButton == null) {
-            browseImgButton = new Button(driver, BROWSE_BUTTON_IMG_AREA);
+    public Span getPictureWarningMessage() {
+        if (warning == null) {
+            warning = new Span(driver, WARNING_MESSAGE);
         }
-        return browseImgButton;
+        return warning;
     }
 
+    public CreateNewsPage uploadFile(String filePath) {
+        getUploadFileField().sendKeys(filePath);
+        WebDriverWait wait = new WebDriverWait(driver, 5);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(WARNING_MESSAGE.getPath()));
+        return this;
+    }
+
+    public Button getUploadFileField() {
+        if (uploadImgButton == null) {
+            uploadImgButton = new Button(driver, UPLOAD_FIELD_IMG_AREA);
+        }
+        return uploadImgButton;
+    }
 }

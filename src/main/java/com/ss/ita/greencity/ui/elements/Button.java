@@ -32,4 +32,8 @@ public class Button extends BaseWebElement {
         return this.webElement.getText();
     }
 
+    public void sendKeys(String text) {
+        this.webElement.sendKeys(text);
+    }
+
 }

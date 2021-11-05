@@ -6,8 +6,6 @@ public enum CreateNewsPageLocators implements BaseLocator {
     CONTENT_TEXT_AREA(By.name("main-area")),
     TEXT_AREA_DESCRIPTION(By.cssSelector("p.textarea-description")),
     TITLE_TEXT_AREA(By.xpath("//textarea[@placeholder='e.g. Coffee takeaway with 20% discount']")),
-    PICTURE_IMG_AREA(By.xpath("//*[@id='main-content']/div/div[2]/form/div[1]/div[2]/app-drag-and-drop/div/div/div")),
-    BROWSE_BUTTON_IMG_AREA(By.xpath("//*[@id='main-content']/div/div[2]/form/div[1]/div[2]/app-drag-and-drop/div/div/div/label/span")),
     NEWS_TAG_BUTTON(By.xpath("//button[normalize-space()='News']")),
     SELECTED_NEWS_TAG_BUTTON(By.xpath("//button[contains (@class, 'tag-news filters-color') and (text()=' News ')]")),
     ADS_TAG_BUTTON(By.xpath("//button[normalize-space()='Ads']")),
@@ -26,7 +24,10 @@ public enum CreateNewsPageLocators implements BaseLocator {
     INITIATIVES_BUTTON(By.xpath("//button[normalize-space()='Initiatives']")),
     EDUCATION_BUTTON(By.xpath("//button[normalize-space()='Education']")),
     PREVIEW_BUTTON(By.xpath("//button[@class='preview']")),
-    PREVIEW_CREATE_BUTTON(By.cssSelector("button[type='submit']"));
+    PREVIEW_CREATE_BUTTON(By.cssSelector("button[type='submit']")),
+    PICTURE_IMG_AREA_WITH_WARNING(By.xpath("//*[@id='main-content']/div/div[2]/form/div[1]/div[2]/app-drag-and-drop/div/div")),
+    UPLOAD_FIELD_IMG_AREA(By.id("upload")),
+    WARNING_MESSAGE(By.xpath("//*[@id='main-content']/div/div[2]/form/div[1]/div[2]/app-drag-and-drop/div/span"));
 
 
     private final By path;
