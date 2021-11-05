@@ -1,9 +1,12 @@
 package com.ss.ita.econews.ui.econews;
 
+import com.ss.ita.econews.ui.CredentialProperties;
 import com.ss.ita.econews.ui.runner.TestRuner;
 import com.ss.ita.greencity.ui.elements.Label;
+import com.ss.ita.greencity.ui.pages.CreateNewsPage;
 import com.ss.ita.greencity.ui.pages.HomePage;
 import com.ss.ita.greencity.ui.pages.econews.EcoNewsListItemComponent;
+import com.ss.ita.greencity.ui.pages.econews.EcoNewsPage;
 import org.openqa.selenium.Point;
 import org.testng.annotations.Test;
 
@@ -14,16 +17,27 @@ import java.util.Locale;
 
 
 public class ItemViewTest extends TestRuner {
+
     @Test
     public void itemViewTest() {
 
-        EcoNewsListItemComponent ecoNewsItem = new HomePage(driver).
-                getHeader()
+        CreateNewsPage createNewsPage  = new HomePage(driver)
+                .getHeader()
+                .login(new CredentialProperties().getNastiaSydorLogin(),
+                        new CredentialProperties().getNastiaSydorPassword())
+                .getHeader()
                 .clickEcoNewsLink()
+                .clickCreateNewsButton();
+        createNewsPage.setTitleTextArea("Title");
+        createNewsPage.clickTagNewsButton();
+        createNewsPage.setContentArea();
+        createNewsPage.clickPublishButton();
+
+        EcoNewsListItemComponent ecoNewsItem = new EcoNewsPage(driver)
                 .getNews()
                 .get(0);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd, yyyy", Locale.US);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d, yyyy", Locale.US);
         boolean valid;
         try {
             LocalDate.parse((ecoNewsItem.getData().getText()), formatter);
@@ -35,10 +49,10 @@ public class ItemViewTest extends TestRuner {
         softAssert.assertTrue(ecoNewsItem.getImage().isDisplayed());
         softAssert.assertTrue(ecoNewsItem.getTag().isDisplayed());
         softAssert.assertTrue(ecoNewsItem.getTitle().isDisplayed());
-        softAssert.assertEquals(ecoNewsItem.getTitle().getText(),"Name");
+        softAssert.assertEquals(ecoNewsItem.getTitle().getText(),"Title");
         softAssert.assertTrue(ecoNewsItem.getContent().isDisplayed());
-        softAssert.assertEquals(ecoNewsItem.getContent().getText(),"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.");
-        softAssert.assertEquals(ecoNewsItem.getAuthor().getText(),"Oleg Postolovskyi");
+        softAssert.assertEquals(ecoNewsItem.getContent().getText(),"Description for test Create News");
+        softAssert.assertEquals(ecoNewsItem.getAuthor().getText(),"Nastia");
         softAssert.assertTrue(valid);
         softAssert.assertTrue(checkElementPosition(ecoNewsItem.getData(), ecoNewsItem.getAuthor()));
         softAssert.assertAll();
