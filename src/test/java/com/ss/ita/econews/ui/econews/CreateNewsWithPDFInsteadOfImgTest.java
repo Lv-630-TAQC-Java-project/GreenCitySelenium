@@ -33,6 +33,7 @@ public class CreateNewsWithPDFInsteadOfImgTest extends TestRuner {
                         .getBackgroundColour())
                 .asHex(), "#fef1f2");
         softAssert.assertTrue(createNewsPage.getPictureWarningArea().isDisplayed());
+        softAssert.assertFalse(createNewsPage.getPublishButton().isEnabled());
         softAssert.assertAll();
     }
 }
