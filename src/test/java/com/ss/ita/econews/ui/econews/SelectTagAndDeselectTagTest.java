@@ -17,9 +17,15 @@ public class SelectTagAndDeselectTagTest extends TestRuner {
                 .clickHomePageLink()
                 .clickEcoNewsLink()
                 .clickCreateNewsButton();
-        String colorSelected = createNewsPage.clickTagNewsButton().getSelectedNewsTagButton().getBackgroundHexColor();
+        String colorSelected = createNewsPage
+                .clickTagNewsButton()
+                .getSelectedNewsTagButton()
+                .getBackgroundHexColor();
         softAssert.assertEquals(colorSelected, "#13aa57");
-        String colorDeselected = createNewsPage.clickSelectedNewsTagButton().getTag_News_button().getBackgroundHexColor();
+        String colorDeselected = createNewsPage
+                .clickSelectedNewsTagButton()
+                .getTag_News_button()
+                .getBackgroundHexColor();
         softAssert.assertEquals(colorDeselected, "#ffffff");
         softAssert.assertAll();
     }
