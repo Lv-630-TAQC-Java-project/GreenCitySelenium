@@ -24,7 +24,7 @@ public class SelectTagAndDeselectTagTest extends TestRuner {
         softAssert.assertEquals(colorSelected, "#13aa57");
         String colorDeselected = createNewsPage
                 .clickSelectedNewsTagButton()
-                .getTagNewsButton()
+                .getTag_News_button()
                 .getBackgroundHexColor();
         softAssert.assertEquals(colorDeselected, "#ffffff");
         softAssert.assertAll();
