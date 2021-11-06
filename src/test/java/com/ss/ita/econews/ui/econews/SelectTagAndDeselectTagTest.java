@@ -1,6 +1,6 @@
 package com.ss.ita.econews.ui.econews;
 
-import com.ss.ita.econews.ui.data.UserSignInData;
+import com.ss.ita.econews.ui.CredentialProperties;
 import com.ss.ita.econews.ui.runner.TestRuner;
 import com.ss.ita.greencity.ui.pages.CreateNewsPage;
 import com.ss.ita.greencity.ui.pages.HomePage;
@@ -12,7 +12,8 @@ public class SelectTagAndDeselectTagTest extends TestRuner {
     public void SelectAndDeselectTagTest() {
         CreateNewsPage createNewsPage = new HomePage(driver)
                 .getHeader()
-                .login(UserSignInData.TEST_USER.getEmail(), UserSignInData.TEST_USER.getPassword())
+                .login(new CredentialProperties().getTestUserLogin(),
+                        new CredentialProperties().getTestUserPassword())
                 .clickHomePageLink()
                 .clickEcoNewsLink()
                 .clickCreateNewsButton();
