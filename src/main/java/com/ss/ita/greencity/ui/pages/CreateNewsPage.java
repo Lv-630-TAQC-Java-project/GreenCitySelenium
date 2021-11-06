@@ -77,12 +77,12 @@ public class CreateNewsPage extends BasePage {
         return new TextArea(driver, TITLE_TEXT_AREA);
     }
 
-    public Button getTag_News_button() {
+    public Button getTagNewsButton() {
            return new Button(driver, NEWS_TAG_BUTTON);
     }
 
     public CreateNewsPage clickTagNewsButton() {
-        getTag_News_button().clickButton();
+        getTagNewsButton().clickButton();
         return new CreateNewsPage(driver);
     }
 
