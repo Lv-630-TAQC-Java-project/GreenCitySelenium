@@ -11,10 +11,19 @@ public class FilterByNewsTest extends TestRuner {
 
     @Test
     public void filterByNewsTest() {
-        EcoNewsPage ecoNewsPage = new HomePage(driver).getHeader().clickEcoNewsLink().clickFilterByNews();
-        String filterBackgroundColor = ecoNewsPage.getFilterByNews().getBackgroundHexColor();
-        String filterText = ecoNewsPage.getFilterByNews().getText();
-        String newsArticleTagText = ecoNewsPage.getNewsByIndex(0).getNewsTag().getText();
+        EcoNewsPage ecoNewsPage = new HomePage(driver)
+                .getHeader().clickEcoNewsLink()
+                .clickFilterByNews();
+        String filterBackgroundColor = ecoNewsPage
+                .getFilterByNews()
+                .getBackgroundHexColor();
+        String filterText = ecoNewsPage
+                .getFilterByNews()
+                .getText();
+        String newsArticleTagText = ecoNewsPage
+                .getNewsByIndex(0)
+                .getNewsTag()
+                .getText();
         softAssert.assertEquals(filterBackgroundColor, "#13aa57");
         softAssert.assertEquals(filterText, "News");
         softAssert.assertEquals(newsArticleTagText, "NEWS");
