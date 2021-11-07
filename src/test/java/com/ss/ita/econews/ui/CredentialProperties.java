@@ -26,7 +26,7 @@ public class CredentialProperties {
     }
 
     public String getTestUserLogin() {
-        return prop.getProperty("VLAD_DMYTRIV_LOGIN");
+        return prop.getProperty("TEST_USER_LOGIN");
     }
     public String getTestUserPassword() {
         return prop.getProperty("TEST_USER_PASS");
